@@ -9,14 +9,14 @@ import { noteService } from "../services/note.service.js"
 
 export function NoteIndex() {
     const [notes, setNotes] = useState(null)
-    const [cmpType, setCmpType] = useState('NoteTxt')
+    const [cmpType, setCmpType] = useState('')
     const [isClicked, setIsClicked] = useState(false)
     const [noteToEdit, setNoteToEdit] = useState(noteService.getEmptyNote())
 
 
+
     function onSetIsClicked() {
         setIsClicked(prevClick => (prevClick = !prevClick))
-
     }
 
     useEffect(() => {
@@ -61,59 +61,75 @@ export function NoteIndex() {
         const field = target.name
         let value = target.value
         setNoteToEdit(prevNotToEdit => ({ ...prevNotToEdit, info: { ...prevNotToEdit.info, [field]: value } }))
+
     }
 
-    const { info } = noteToEdit
+    function handleChangeType({ target }) {
+        let value = target.value
+        setNoteToEdit(prevType => ({ ...prevType, type: value }))
+    }
+
+    const { info, type } = noteToEdit
+
     if (!notes) return <div>loading...</div>
     return <section className="note-index-main-container">
 
 
         {!isClicked && <div className="new-note-container" onClick={onSetIsClicked}>
             <p>Add new note...</p>
-            {/* <div className="inputs-container">
-                <label htmlFor="note-text">📄</label>
-                <input type="radio"
-                    id="note-text"
-                    name="note-text"
-                    value="NoteTxt"
-                    onClick={(ev) => { setCmpType(ev.target.value) }}
-                    style={{ display: 'none' }} />
-
-                <label htmlFor="note-img">📷</label>
-                <input type="radio"
-                    id="note-img"
-                    name="note-img"
-                    value="NoteImg"
-                    onClick={(ev) => { setCmpType(ev.target.value) }}
-                    style={{ display: 'none' }} />
-
-                <label htmlFor="note-video">📹</label>
-                <input type="radio"
-                    id="note-video"
-                    name="note-video"
-                    value="NoteVideo"
-                    onClick={(ev) => { setCmpType(ev.target.value) }}
-                    style={{ display: 'none' }} />
-
-                <label htmlFor="note-todo">📝</label>
-                <input type="radio"
-                    id="note-todo"
-                    name="note-text"
-                    value="NoteTodos"
-                    onClick={(ev) => { setCmpType(ev.target.value) }}
-                    style={{ display: 'none' }} />
-            </div> */}
-
-
         </div>}
+
+
         {isClicked &&
-            // <React.Fragment>
+
             <DynamicSwitch cmpType={cmpType}
                 handleChange={handleChange}
                 onSaveNote={onSaveNote}
                 onSetIsClicked={onSetIsClicked}
                 info={info}
             />}
+
+        <label htmlFor="note-text">📄</label>
+        <input type="radio"
+            id="note-text"
+            name="note-text"
+            value="NoteTxt"
+            onChange={(ev) => { setCmpType(ev.target.value) }}
+            onClick={handleChangeType}
+            style={{ display: 'none' }} />
+
+        <label htmlFor="note-img">📷</label>
+        <input type="radio"
+            id="note-img"
+            name="note-img"
+            value="NoteImg"
+            onChange={(ev) => { setCmpType(ev.target.value) }}
+            onClick={handleChangeType}
+            style={{ display: 'none' }} />
+
+        <label htmlFor="note-video">📹</label>
+        <input type="radio"
+            id="note-video"
+            name="note-video"
+            value="NoteVideo"
+            onChange={(ev) => { setCmpType(ev.target.value) }}
+            onClick={handleChangeType}
+            style={{ display: 'none' }} />
+
+        <label htmlFor="note-todo">📝</label>
+        <input type="radio"
+            id="note-todo"
+            name="note-text"
+            value="NoteTodos"
+            onChange={(ev) => { setCmpType(ev.target.value) }}
+            onClick={handleChangeType}
+            style={{ display: 'none' }} />
+
+
+
+
+
+
 
 
         {/* <input className="input-add-new-note" type="text"
@@ -141,6 +157,7 @@ export function NoteIndex() {
                     <NotePreview note={note}
                         onRemoveNote={onRemoveNote}
                         onUpdateNote={onUpdateNote}
+
                     />
                 </article>)
 
@@ -148,5 +165,5 @@ export function NoteIndex() {
 
 
         </section>
-    </section>
+    </section >
 }

@@ -3,7 +3,7 @@
 import { utilService } from '../../../services/util.service.js'
 import { storageService } from '../../../services/storage.service.js'
 import { asyncStorageService } from "../../../services/async-storage.service.js";
-import{}from "../../../assets/img"
+
 // const notes = [{
 //     id: 'n101',
 //     createdAt: 1112222,
@@ -59,25 +59,27 @@ function remove(noteId) {
 }
 
 function save(note) {
+ 
     if (note.id) {
         return asyncStorageService.put(NOTE_KEY, note)
     } else {
-        note = _createNote(note.info.txt)
+        note = _createNote(note.info.txt, note.type, note.info.url)
         return asyncStorageService.post(NOTE_KEY, note)
     }
 }
 
-function getEmptyNote(txt = '') {
+function getEmptyNote(txt = '', type = '', url = '') {
     return {
 
         createdAt: Date.now(),
-        type: 'NoteTxt',
+        type,
         isPinned: false,
         style: {
             backgroundColor: '#ffffff'
         },
         info: {
-            txt
+            txt,
+            url,
         }
     }
 }
@@ -109,15 +111,15 @@ function _createNotes() {
             }
         }]
 
-        notes.push(_createNote('Hit me baby'))
+        notes.push(_createNote('Hit me baby'), "NoteTxt")
 
 
         storageService.saveToStorage(NOTE_KEY, notes)
     }
 }
 
-function _createNote(txt) {
-    const note = getEmptyNote(txt)
+function _createNote(txt, type, url) {
+    const note = getEmptyNote(txt, type, url)
     note.id = utilService.makeId()
     return note
 }
