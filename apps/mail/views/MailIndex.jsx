@@ -34,7 +34,6 @@ export function MailIndex() {
     return <section className="mail-index-container">
 
         <MailFilter />
-
         <MailFolderList />
 
         {!mails && <div>loading...</div>}

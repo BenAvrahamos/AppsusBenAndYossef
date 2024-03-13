@@ -1,5 +1,5 @@
 import { utilService } from '../../../services/util.service.js'
-import { storageService } from '../../../services/async-storage.service.js'
+import {  asyncStorageService } from '../../../services/async-storage.service.js'
 
 const MAIL_KEY = 'MailDB'
 
@@ -26,7 +26,7 @@ export const mailService = {
 
 
 function query() {
-    return storageService.query(MAIL_KEY)
+    return asyncStorageService.query(MAIL_KEY)
         .then(mails => {
             // if (filterBy.title) {
             //   const regex = new RegExp(filterBy.title, 'i')
@@ -48,18 +48,18 @@ function query() {
 
 
 function get(mailId) {
-    return storageService.get(MAIL_KEY, mailId)
+    return asyncStorageService.get(MAIL_KEY, mailId)
 }
 
 function remove(mailId) {
-    return storageService.remove(MAIL_KEY, mailId)
+    return asyncStorageService.remove(MAIL_KEY, mailId)
 }
 
 function save(mail) {
     if (mail.id) {
-        return storageService.put(MAIL_KEY, mail)
+        return asyncStorageService.put(MAIL_KEY, mail)
     } else {
-        return storageService.post(MAIL_KEY, mail)
+        return asyncStorageService.post(MAIL_KEY, mail)
     }
 }
 
