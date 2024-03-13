@@ -1,9 +1,12 @@
 // const { useState } = React
 
+import { NoteImg } from "./NoteImg.jsx"
+import { NoteTodos } from "./NoteTodos.jsx"
 import { NoteTxt } from "./NoteTxt.jsx"
+import { NoteVideo } from "./NoteVideo.jsx"
 
 export function DynamicSwitch({ cmpType }) {
-    // const [cmpType, setCmpType] = useState('')
+   
 
     console.log(cmpType)
 
@@ -15,11 +18,11 @@ export function DynamicSwitch({ cmpType }) {
         case 'NoteTxt':
             return <NoteTxt />
         case 'NoteImg':
-            return <NoteImg {...props} />
+            return <NoteImg />
         case 'NoteVideo':
-            return <NoteVideo {...props} />
+            return <NoteVideo />
         case 'NoteTodos':
-            return <NoteTodos {...props} />
+            return <NoteTodos />
     }
 
 
