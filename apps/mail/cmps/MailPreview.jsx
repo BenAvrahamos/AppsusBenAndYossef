@@ -6,7 +6,7 @@ import { utilService } from '../../../services/util.service.js'
 export function MailPreview({ mail }) {
     const date = Date(mail.sentAt)
     const navigate = useNavigate()
-    const NewDate = utilService.getDayName(date)
+    const dateDay = utilService.getDayName(date)
 
  
     function openMailDetails() {
@@ -26,7 +26,7 @@ export function MailPreview({ mail }) {
             
             <span className="mail-body">{mail.body}</span>
         {/* </div> */}
-        <span className="mail-sent-at">{NewDate}</span>
+        <span className="mail-sent-at">{dateDay}</span>
 
 
     </article>

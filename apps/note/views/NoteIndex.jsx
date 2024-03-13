@@ -70,7 +70,7 @@ export function NoteIndex() {
 
         {!isClicked && <div className="new-note-container" onClick={onSetIsClicked}>
             <p>Add new note...</p>
-            {/* <div className="inputs-container">
+            <div className="inputs-container">
                 <label htmlFor="note-text">📄</label>
                 <input type="radio"
                     id="note-text"
@@ -102,7 +102,7 @@ export function NoteIndex() {
                     value="NoteTodos"
                     onClick={(ev) => { setCmpType(ev.target.value) }}
                     style={{ display: 'none' }} />
-            </div> */}
+            </div>
 
 
         </div>}

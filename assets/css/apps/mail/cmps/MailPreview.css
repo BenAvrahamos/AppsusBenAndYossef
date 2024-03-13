@@ -20,6 +20,7 @@
 .mail-subject,
 .mail-body {
     font-size: 0.875em;
+    padding-block: 0.625em;
      
 }
 
@@ -39,8 +40,8 @@
 }
 
 .mail-body {
-    padding-block: 0.625em;
-    height: 2em;
+   
+ 
     width: 2px;
     flex-grow: 1;
     text-wrap: nowrap;
