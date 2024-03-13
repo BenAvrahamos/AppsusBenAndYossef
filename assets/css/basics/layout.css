@@ -21,6 +21,11 @@
 
 }
 
+.mail-details-container{
+    grid-column: 2;
+
+}
+
 /* -------------------------------- */
 
 

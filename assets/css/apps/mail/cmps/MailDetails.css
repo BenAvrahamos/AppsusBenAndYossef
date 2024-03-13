@@ -1,0 +1,40 @@
+.mail-specifics{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.mail-details-container header{
+    font-size: 1.5em;
+    margin-block: 1em;
+    background-color: white;
+}
+
+.mail-contacts{
+    font-size: 0.75em;
+
+}
+
+
+
+.mail-actions{
+    display: flex;
+    font-size: 0.75em;
+    gap: 10px;
+    margin-right :0.5em;
+
+    align-items: center;
+
+}
+
+.mail-content{
+    margin-top: 3em;
+    font-size: 1.5em;
+
+    width: 40vw;
+}
+
+.mail-actions button{
+height: max-content;
+
+}
