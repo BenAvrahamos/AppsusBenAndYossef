@@ -16,6 +16,7 @@ export function NoteIndex() {
 
     function onSetIsClicked() {
         setIsClicked(prevClick => (prevClick = !prevClick))
+
     }
 
     useEffect(() => {
@@ -40,13 +41,11 @@ export function NoteIndex() {
         noteService.save(noteToUpdate)
             .then((savedNote) => {
                 setNotes(prevNotes => prevNotes.map(note => note.id === savedNote.id ? savedNote : note))
-
             })
             .catch(err => {
                 alert('Had issues with updating note', err)
 
             })
-
     }
 
     function onSaveNote() {
@@ -64,17 +63,14 @@ export function NoteIndex() {
         setNoteToEdit(prevNotToEdit => ({ ...prevNotToEdit, info: { ...prevNotToEdit.info, [field]: value } }))
     }
 
-
-
-   
     const { info } = noteToEdit
     if (!notes) return <div>loading...</div>
     return <section className="note-index-main-container">
 
 
-        <div className="new-note-container" onClick={onSetIsClicked}>
+        {!isClicked && <div className="new-note-container" onClick={onSetIsClicked}>
             <p>Add new note...</p>
-            <div className="inputs-container">
+            {/* <div className="inputs-container">
                 <label htmlFor="note-text">📄</label>
                 <input type="radio"
                     id="note-text"
@@ -106,20 +102,29 @@ export function NoteIndex() {
                     value="NoteTodos"
                     onClick={(ev) => { setCmpType(ev.target.value) }}
                     style={{ display: 'none' }} />
-            </div>
+            </div> */}
 
 
-        </div>
+        </div>}
         {isClicked &&
-            <React.Fragment>
-                <input type="text"
+            // <React.Fragment>
+            <DynamicSwitch cmpType={cmpType}
+                handleChange={handleChange}
+                onSaveNote={onSaveNote}
+                onSetIsClicked={onSetIsClicked}
+                info={info}
+            />}
+
+
+        {/* <input className="input-add-new-note" type="text"
                     placeholder="Enter text..."
                     name="txt"
                     onChange={handleChange}
                     value={info.txt}
                 />
-                <button onClick={onSaveNote}>Save</button>
-            </React.Fragment>}
+                <button className="save-new-note-btn" onClick={onSaveNote}>Save</button>
+                <button className="cancel-new-note-btn" onClick={onSetIsClicked}>Cancel</button>
+            </React.Fragment>} */}
 
         {/* <DynamicSwitch cmpType={cmpType} /> */}
 

@@ -29,7 +29,7 @@
     border-radius: 15px;
     width: 25vw;
     min-height: 15vh;
-   box-shadow: inset 1px 1px 0 rgba(0,0,0,.1), inset 0 -1px 0 rgba(0,0,0,.07);
+    box-shadow: inset 1px 1px 0 rgba(0, 0, 0, .1), inset 0 -1px 0 rgba(0, 0, 0, .07);
 
  }
 
@@ -50,24 +50,58 @@
  .remove-btn {
     border-radius: 20px;
     background-color: #202124;
-    color: #fff;
+    color: #ffffff;
+    width: 30px;
  }
 
- .inputs-container{
-   display: flex;
+ .inputs-container {
+    display: flex;
  }
 
  .new-note-container {
-   margin: 0 auto;
-   display: flex;
-   justify-content: space-around;
-   align-items: center;
- 
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
     background-clip: padding-box;
     border: solid transparent;
     border-width: 1px 6px 1px 1px;
     min-height: 28px;
-  
-   max-width: 50%;
-   box-shadow: inset 1px 1px 0 rgba(0,0,0,.1), inset 0 -1px 0 rgba(0,0,0,.07);
-}
+    border-radius: 15px;
+    max-width: 50%;
+    box-shadow: inset 1px 1px 0 rgba(0, 0, 0, .1), inset 0 -1px 0 rgba(0, 0, 0, .07);
+ }
+
+ .input-add-new-note {
+    display: block;
+    margin: 0 auto;
+ }
+
+ .save-new-note-btn {
+    display: block;
+    padding: 10px 25px;
+    border: none;
+    background-color: #fff;
+    box-shadow: inset 1px 1px 0 rgba(0, 0, 0, .1), inset 0 -1px 0 rgba(0, 0, 0, .07);
+    border-radius: 15px;
+    margin: 5px auto;
+ }
+
+ .save-new-note-btn:hover {
+    background-color: lightblue;
+ }
+
+ .cancel-new-note-btn {
+    display: block;
+    padding: 7px 15px;
+    border: none;
+    background-color: #d3caca;
+    box-shadow: inset 1px 1px 0 rgba(0, 0, 0, .1), inset 0 -1px 0 rgba(0, 0, 0, .07);
+    border-radius: 15px;
+    margin: 5px auto;
+ }
+
+ .cancel-new-note-btn:hover {
+    background-color: lightcoral;
+ }

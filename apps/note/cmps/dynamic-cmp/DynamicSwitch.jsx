@@ -5,24 +5,24 @@ import { NoteTodos } from "./NoteTodos.jsx"
 import { NoteTxt } from "./NoteTxt.jsx"
 import { NoteVideo } from "./NoteVideo.jsx"
 
-export function DynamicSwitch({ cmpType }) {
+export function DynamicSwitch(props) {
    
 
-    console.log(cmpType)
+    
 
 
 
 
 
-    switch (cmpType) {
+    switch (props.cmpType) {
         case 'NoteTxt':
-            return <NoteTxt />
+            return <NoteTxt {...props}/>
         case 'NoteImg':
-            return <NoteImg />
+            return <NoteImg {...props}/>
         case 'NoteVideo':
-            return <NoteVideo />
+            return <NoteVideo {...props}/>
         case 'NoteTodos':
-            return <NoteTodos />
+            return <NoteTodos {...props}/>
     }
 
 

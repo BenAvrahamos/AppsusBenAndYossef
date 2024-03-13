@@ -3,7 +3,7 @@
 import { utilService } from '../../../services/util.service.js'
 import { storageService } from '../../../services/storage.service.js'
 import { asyncStorageService } from "../../../services/async-storage.service.js";
-
+import{}from "../../../assets/img"
 // const notes = [{
 //     id: 'n101',
 //     createdAt: 1112222,
@@ -74,7 +74,7 @@ function getEmptyNote(txt = '') {
         type: 'NoteTxt',
         isPinned: false,
         style: {
-            backgroundColor: 'rgb(224 255 255)'
+            backgroundColor: '#ffffff'
         },
         info: {
             txt
@@ -91,9 +91,21 @@ function _createNotes() {
             type: 'NoteTxt',
             isPinned: true,
             style: {
-                backgroundColor: 'rgb(194 194 205)'
+                backgroundColor: 'rgb(224 255 255)'
             }, info: {
                 txt: 'Fullstack Me Baby!'
+            }
+        },
+        {
+            id: 'n102',
+            type: 'NoteImg',
+            isPinned: false,
+            info: {
+                url: "../../../assets/img/audi.jpg",
+                title: 'Bobi and Me'
+            },
+            style: {
+                backgroundColor: '#00d'
             }
         }]
 
@@ -121,3 +133,17 @@ function _createNote(txt) {
 //         txt: 'Fullstack Me Baby!'
 //     }
 // }]
+
+
+// const gog = {
+//     id: 'n102',
+//     type: 'NoteImg',
+//     isPinned: false,
+//     info: {
+//         url: 'http://some-img/me',
+//         title: 'Bobi and Me'
+//     },
+//     style: {
+//         backgroundColor: '#00d'
+//     }
+// }
