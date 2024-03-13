@@ -1,12 +1,22 @@
 
 
-export function NoteImg() {
+export function NoteImg({ handleChange, info, onSaveNote, onSetIsClicked }) {
 
-    return <section className="note-img-container">
-        <h2>hey from NoteImg</h2>
+console.log(info);
 
-        <input type="text"
+    return <section className="note-text-container">
+
+
+        <input className="input-add-new-note"
+            type="text"
             placeholder="Enter image URL.."
+            onChange={handleChange}
+            value={info.url}
+            name="url"
         />
+
+        <button className="save-new-note-btn" onClick={onSaveNote}>Save</button>
+        <button className="cancel-new-note-btn" onClick={onSetIsClicked}>Cancel</button>
+
     </section>
 }

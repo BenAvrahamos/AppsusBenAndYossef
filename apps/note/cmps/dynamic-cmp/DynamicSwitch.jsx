@@ -6,9 +6,9 @@ import { NoteTxt } from "./NoteTxt.jsx"
 import { NoteVideo } from "./NoteVideo.jsx"
 
 export function DynamicSwitch(props) {
-   
 
-    
+
+
 
 
 
@@ -16,19 +16,19 @@ export function DynamicSwitch(props) {
 
     switch (props.cmpType) {
         case 'NoteTxt':
-            return <NoteTxt {...props}/>
+            return <NoteTxt {...props} />
         case 'NoteImg':
-            return <NoteImg {...props}/>
+            return <NoteImg {...props} />
         case 'NoteVideo':
-            return <NoteVideo {...props}/>
+            return <NoteVideo {...props} />
         case 'NoteTodos':
-            return <NoteTodos {...props}/>
+            return <NoteTodos {...props} />
     }
 
 
     return <section className="dyn-container">
 
-        <h2>hey from dyn</h2>
+        <h2>Select text or image...</h2>
 
 
 

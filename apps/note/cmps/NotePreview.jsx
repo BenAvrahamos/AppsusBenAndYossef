@@ -9,7 +9,6 @@ const { useState } = React
 export function NotePreview({ note, onRemoveNote, onUpdateNote }) {
 
 
-    console.log(note.type)
 
 
     return <div className="note" style={note.style}>
