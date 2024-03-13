@@ -6,17 +6,18 @@ export function MailPreview({ mail }) {
     const NewDate = utilService.getDayName(date)
     console.log(NewDate);
 
+function hello(){
+    console.log('hi');
+}
 
 
-
-    return <article className="mail-preview">
+    return <article onClick={hello} className="mail-preview">
 
 
 
 
         <span className="mail-from">{mail.from}</span>
         <span className="mail-subject">{mail.subject}</span>
-        <span className="mail-body">{mail.body}</span>
         <span className="mail-sent-at">{NewDate}</span>
 
 

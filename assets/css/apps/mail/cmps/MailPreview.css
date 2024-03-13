@@ -1,0 +1,23 @@
+.mail-preview {
+    display: flex;
+    justify-content: space-between;
+    padding-block: 0.625em;
+    box-shadow: 0px 2px 0 0 rgb(0 0 0 / 12%);
+    padding-right: 5px;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.mail-from,
+.mail-subject,
+.mail-body {
+    font-size: 0.875em;
+    
+}
+
+
+.mail-sent-at{
+    font-size:  0.75em;
+   
+}

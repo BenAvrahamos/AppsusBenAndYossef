@@ -21,18 +21,18 @@ export function MailIndex() {
         mailService.query()
             .then((mails) => {
                 setMails(mails)
-            
+
             })
     }
-    if (!mails) return <div>loading...</div>
+
     return <section className="mail-index-container">
-
-
 
         <MailFilter />
 
         <MailFolderList />
-        <MailList mails={mails} />
+
+        {!mails && <div>loading...</div>}
+        {mails && <MailList mails={mails} />}
 
 
 
