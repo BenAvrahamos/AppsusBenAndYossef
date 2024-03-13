@@ -29,7 +29,7 @@ export const noteService = {
 }
 
 
-function query() {
+function query(filterBy = getDefaultFilter()) {
     // console.log('filterBy', filterBy)
 
     return asyncStorageService.query(NOTE_KEY)

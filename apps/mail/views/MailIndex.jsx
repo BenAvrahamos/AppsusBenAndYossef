@@ -14,20 +14,20 @@ console.log();
 
 
 export function MailIndex() {
-
+    const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter)
     const [mails, setMails] = useState(null)
 
     const { mailId } = useParams()
-  
+
 
 
     useEffect(() => {
         loadMails()
-        
-    }, [])
+
+    }, [filterBy])
 
     function loadMails() {
-        mailService.query()
+        mailService.query(filterBy)
             .then((mails) => {
                 setMails(mails)
 
@@ -36,14 +36,17 @@ export function MailIndex() {
 
     return <section className="mail-index-container">
 
-        <MailFilter />
+        <MailFilter
+            filterBy={filterBy}
+            setFilterBy={setFilterBy} />
+
         <MailFolderList />
 
         {!mails && <div>loading...</div>}
         {mails && !mailId && <MailList mails={mails} />}
 
         {mailId && <Outlet />}
-       
+
 
 
     </section>

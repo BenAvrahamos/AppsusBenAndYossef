@@ -1,5 +1,5 @@
 import { utilService } from '../../../services/util.service.js'
-import {  asyncStorageService } from '../../../services/async-storage.service.js'
+import { asyncStorageService } from '../../../services/async-storage.service.js'
 
 const MAIL_KEY = 'MailDB'
 
@@ -20,18 +20,21 @@ export const mailService = {
     save,
     remove,
     getEmptyMail,
-    _createMails
+    getDefaultFilter
 }
 
 
 
-function query() {
+function query(filterBy = getDefaultFilter()) {
     return asyncStorageService.query(MAIL_KEY)
         .then(mails => {
-            // if (filterBy.title) {
-            //   const regex = new RegExp(filterBy.title, 'i')
-            //   books = books.filter(book => regex.test(book.title))
-            // }
+            if (filterBy.txt) {
+                const regex = new RegExp(filterBy.txt, 'i')
+                mails = mails.filter(mail => regex.test(mail.body) ||
+                    regex.test(mail.subject) ||
+                    regex.test(mail.from) ||
+                    regex.test(mail.to))
+            }
             // if (filterBy.price) {
 
             //   books = books.filter(book => book.listPrice.amount >= filterBy.price
@@ -88,53 +91,67 @@ function getEmptyMail(
 function _createMails() {
     let Mails = utilService.loadFromStorage(MAIL_KEY)
     if (!Mails || !Mails.length) {
-      Mails = gMails
-      utilService.saveToStorage(MAIL_KEY, Mails)
-      
+        Mails = gMails
+        utilService.saveToStorage(MAIL_KEY, Mails)
+
     }
-  }
+}
+
+function getDefaultFilter() {
+    return {
+        status: '',
+        txt: '',
+        isRead: false,
+        isStared: false,
+        labels: ['important', 'romantic']
+
+    }
+
+
+}
 
 
 const gMails = [
     {
         id: utilService.makeId(),
-        subject : "Sprint 3 Bitch!",
-        body : "Lets do this my Man",
-        isRead : false,
-        sentAt : Date.now(),
-        removedAt :null,
+        subject: "Sprint 3 Bitch!",
+        body: "Lets do this my Man",
+        isRead: false,
+        sentAt: Date.now(),
+        removedAt: null,
         from: loggedInUser.email,
         to: "Yossef@.gmail.com"
     },
     {
         id: utilService.makeId(),
-        subject : "Sprint 3 Bitch!",
-        body : "Lets do this my Man",
-        isRead : false,
-        sentAt : Date.now(),
-        removedAt :null,
+        subject: "Cakes CAKES CAKES!",
+        body: "Lets do this my Man",
+        isRead: false,
+        sentAt: Date.now(),
+        removedAt: null,
         from: loggedInUser.email,
         to: "Yossef@.gmail.com"
     },
     {
         id: utilService.makeId(),
-        subject : "Sprint 3 Bitch!",
-        body : "Lets do this my Man",
-        isRead : false,
-        sentAt : Date.now(),
-        removedAt :null,
+        subject: "Sprint 3 Bitch!",
+        body: "In the quiet of the night, Underneath the starry sky, Whispers echo in the breeze, Tales of love and memories. A melody begins to play, Softly dancing, in the fray, Hearts entwined, forever bound, Lost within the sweetest sound."
+        ,
+        isRead: false,
+        sentAt: Date.now(),
+        removedAt: null,
         from: loggedInUser.email,
         to: "Yossef@.gmail.com"
     },
     {
         id: utilService.makeId(),
-        subject : "Sprint 3 Bitch!",
-        body : "The sun dipped below the horizon, casting a warm orange glow across the sky, while birds chirped happily in the trees, and a gentle breeze rustled through the leaves, carrying the scent of fresh flowers.",
-        isRead : false,
-        sentAt : Date.now(),
-        removedAt :null,
+        subject: "!",
+        body: "The sun dipped below the horizon, casting a warm orange glow across the sky, while birds chirped happily in the trees, and a gentle breeze rustled through the leaves, carrying the scent of fresh flowers.",
+        isRead: false,
+        sentAt: Date.now(),
+        removedAt: null,
         from: loggedInUser.email,
-        to: "Yossef@.gmail.com"
+        to: "BenAvraham1998@Gmail.com"
     },
 
 ]
