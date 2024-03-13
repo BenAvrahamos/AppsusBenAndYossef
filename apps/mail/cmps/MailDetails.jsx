@@ -1,8 +1,22 @@
+const { useNavigate, useParams } = ReactRouter
 
 
-export function MailDetails({mailId}){
+import { mailService } from "../services/mail.service.js";
+export function MailDetails(){
+
+    const { mailId } = useParams()
+
+
+
+
+
+
+    mailService.get(mailId)
+    .then( mail => console.log(mail))
 
     return <section>
+
+        
         Hello!
-        {mailId}</section>
+        </section>
 }

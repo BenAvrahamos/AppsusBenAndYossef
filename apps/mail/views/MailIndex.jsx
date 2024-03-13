@@ -1,12 +1,14 @@
 const { useState, useEffect } = React
 const { Link, Outlet, NavLink } = ReactRouterDOM
+const { useNavigate, useParams } = ReactRouter
 
 import { MailFilter } from "../cmps/MailFilter.jsx";
 import { MailFolderList } from "../cmps/MailFolderList.jsx";
 import { MailList } from "../cmps/MailList.jsx";
 import { mailService } from "../services/mail.service.js";
 
-const { useNavigate, useParams } = ReactRouter
+
+console.log();
 
 
 
@@ -16,11 +18,12 @@ export function MailIndex() {
     const [mails, setMails] = useState(null)
 
     const { mailId } = useParams()
+  
 
 
     useEffect(() => {
         loadMails()
-
+        
     }, [])
 
     function loadMails() {
@@ -40,6 +43,7 @@ export function MailIndex() {
         {mails && !mailId && <MailList mails={mails} />}
 
         {mailId && <Outlet />}
+       
 
 
     </section>

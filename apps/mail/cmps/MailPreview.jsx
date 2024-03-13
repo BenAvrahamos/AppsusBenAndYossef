@@ -10,7 +10,7 @@ export function MailPreview({ mail }) {
 
  
     function openMailDetails() {
-        navigate(`/mail/:${mail.id}`)
+        navigate(`/mail/${mail.id}`)
 
     }
 
