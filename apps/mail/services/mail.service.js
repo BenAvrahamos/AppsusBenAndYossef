@@ -13,7 +13,7 @@ const loggedInUser = {
 }
 
 
-_createMails
+
 export const mailService = {
     query,
     get,
@@ -126,5 +126,16 @@ const gMails = [
         from: loggedInUser.email,
         to: "Yossef@.gmail.com"
     },
+    {
+        id: utilService.makeId(),
+        subject : "Sprint 3 Bitch!",
+        body : "The sun dipped below the horizon, casting a warm orange glow across the sky, while birds chirped happily in the trees, and a gentle breeze rustled through the leaves, carrying the scent of fresh flowers.",
+        isRead : false,
+        sentAt : Date.now(),
+        removedAt :null,
+        from: loggedInUser.email,
+        to: "Yossef@.gmail.com"
+    },
 
 ]
+_createMails()
