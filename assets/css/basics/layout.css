@@ -1,0 +1,24 @@
+
+/* Mail Layout-------------------------------- */
+.mail-index-container{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    
+}
+
+.mail-filter{
+    grid-column: 2;
+}
+
+.mail-folder-list-container{
+    grid-column: 1;
+    grid-row: 1;
+    border: black solid 1px;
+}
+
+.mail-list-container{
+    grid-column: 2;
+    border: black solid 1px;
+}
+
+/* -------------------------------- */
