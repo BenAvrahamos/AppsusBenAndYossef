@@ -1,31 +1,22 @@
 const { useState, useEffect } = React
-const { Link, useSearchParams } = ReactRouterDOM
 
+import { AddNote } from "../cmps/AddNote.jsx"
 import { NotePreview } from "../cmps/NotePreview.jsx"
-import { DynamicSwitch } from "../cmps/dynamic-cmp/DynamicSwitch.jsx"
-
 
 import { noteService } from "../services/note.service.js"
 
 export function NoteIndex() {
     const [notes, setNotes] = useState(null)
-    const [cmpType, setCmpType] = useState('')
-    const [isClicked, setIsClicked] = useState(false)
-    const [noteToEdit, setNoteToEdit] = useState(noteService.getEmptyNote())
-
-
-
-    function onSetIsClicked() {
-        setIsClicked(prevClick => (prevClick = !prevClick))
-    }
+    const [isExpanded, setIsExpanded] = useState(false)
 
     useEffect(() => {
         loadNotes()
-    }, [isClicked])
+    }, [isExpanded])
 
     function loadNotes() {
         noteService.query()
-            .then((notes) => setNotes(notes))
+            .then((notes) => { setNotes(notes) })
+            .catch((err) => alert(`Failed to load notes: ${err}`))
     }
 
     function onRemoveNote(noteId) {
@@ -48,122 +39,22 @@ export function NoteIndex() {
             })
     }
 
-    function onSaveNote() {
-        noteService.save(noteToEdit)
-            .then(() => {
-                alert('Note saved')
-                onSetIsClicked()
-            })
-            .catch(err => { 'could not save', err })
-    }
-
-    function handleChange({ target }) {
-        const field = target.name
-        let value = target.value
-        setNoteToEdit(prevNotToEdit => ({ ...prevNotToEdit, info: { ...prevNotToEdit.info, [field]: value } }))
-
-    }
-
-    function handleChangeType({ target }) {
-        let value = target.value
-        setNoteToEdit(prevType => ({ ...prevType, type: value }))
-    }
-
-    const { info, type } = noteToEdit
-
     if (!notes) return <div>loading...</div>
+
     return <section className="note-index-main-container">
 
-
-        {!isClicked && <div className="new-note-container" onClick={onSetIsClicked}>
-            <p>Add new note...</p>
-        </div>}
-
-
-        {isClicked &&
-
-            <DynamicSwitch cmpType={cmpType}
-                handleChange={handleChange}
-                onSaveNote={onSaveNote}
-                onSetIsClicked={onSetIsClicked}
-                info={info}
-            />}
-
-        <label htmlFor="note-text">📄</label>
-        <input type="radio"
-            id="note-text"
-            name="note-text"
-            value="NoteTxt"
-            onChange={(ev) => { setCmpType(ev.target.value) }}
-            onClick={handleChangeType}
-            style={{ display: 'none' }} />
-
-        <label htmlFor="note-img">📷</label>
-        <input type="radio"
-            id="note-img"
-            name="note-img"
-            value="NoteImg"
-            onChange={(ev) => { setCmpType(ev.target.value) }}
-            onClick={handleChangeType}
-            style={{ display: 'none' }} />
-
-        <label htmlFor="note-video">📹</label>
-        <input type="radio"
-            id="note-video"
-            name="note-video"
-            value="NoteVideo"
-            onChange={(ev) => { setCmpType(ev.target.value) }}
-            onClick={handleChangeType}
-            style={{ display: 'none' }} />
-
-        <label htmlFor="note-todo">📝</label>
-        <input type="radio"
-            id="note-todo"
-            name="note-text"
-            value="NoteTodos"
-            onChange={(ev) => { setCmpType(ev.target.value) }}
-            onClick={handleChangeType}
-            style={{ display: 'none' }} />
-
-
-
-
-
-
-
-
-        {/* <input className="input-add-new-note" type="text"
-                    placeholder="Enter text..."
-                    name="txt"
-                    onChange={handleChange}
-                    value={info.txt}
-                />
-                <button className="save-new-note-btn" onClick={onSaveNote}>Save</button>
-                <button className="cancel-new-note-btn" onClick={onSetIsClicked}>Cancel</button>
-            </React.Fragment>} */}
-
-        {/* <DynamicSwitch cmpType={cmpType} /> */}
-
-
-
-
-
-        {/* <Link to="/note/edit"><button className="add-btn">Add</button></Link> */}
+        <section className="note-add-container">
+            <AddNote isExpanded={isExpanded} setIsExpanded={setIsExpanded} />
+        </section>
 
         <section className="note-index-container">
-
-            {
-                notes.map(note => <article key={note.id}>
-                    <NotePreview note={note}
-                        onRemoveNote={onRemoveNote}
-                        onUpdateNote={onUpdateNote}
-
-                    />
-                </article>)
-
-            }
-
-
+            {notes.map(note => <article key={note.id}>
+                <NotePreview
+                    note={note}
+                    onRemoveNote={onRemoveNote}
+                    onUpdateNote={onUpdateNote}
+                />
+            </article>)}
         </section>
     </section >
 }

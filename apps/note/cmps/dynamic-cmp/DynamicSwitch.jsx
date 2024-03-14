@@ -1,4 +1,3 @@
-// const { useState } = React
 
 import { NoteImg } from "./NoteImg.jsx"
 import { NoteTodos } from "./NoteTodos.jsx"
@@ -7,14 +6,7 @@ import { NoteVideo } from "./NoteVideo.jsx"
 
 export function DynamicSwitch(props) {
 
-
-
-
-
-
-
-
-    switch (props.cmpType) {
+    switch (props.noteToEdit.type) {
         case 'NoteTxt':
             return <NoteTxt {...props} />
         case 'NoteImg':
@@ -24,14 +16,4 @@ export function DynamicSwitch(props) {
         case 'NoteTodos':
             return <NoteTodos {...props} />
     }
-
-
-    return <section className="dyn-container">
-
-        <h2>Select text or image...</h2>
-
-
-
-
-    </section>
 }
