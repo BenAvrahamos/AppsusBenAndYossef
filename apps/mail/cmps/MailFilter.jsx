@@ -1,11 +1,22 @@
 import { mailService } from "../services/mail.service.js";
+const { useNavigate, useParams } = ReactRouter
+
+
 
 
 export function MailFilter({ filterBy, setFilterBy }) {
-    console.log(filterBy);
+
+    const navigate = useNavigate()
+
+    function onSubmit(ev) {
+        ev.preventDefault()
+        navigate('/mail')
+    }
+
 
 
     function handleChange({ target }) {
+
         const value = target.value
         setFilterBy(prevFilterBy =>
             ({ ...prevFilterBy, txt: value }))
@@ -14,13 +25,14 @@ export function MailFilter({ filterBy, setFilterBy }) {
 
 
     return <section className="mail-filter">
+        <form onSubmit={onSubmit}>
 
-        <input type="text"
-            placeholder="Search for Mail..."
-            value={filterBy.txt}
-            onChange={handleChange} />
+            <input type="text"
+                placeholder="Search for Mail by Subject / Body / Address..."
+                value={filterBy.txt}
+                onChange={handleChange} />
 
-
+        </form>
 
     </section>
 
