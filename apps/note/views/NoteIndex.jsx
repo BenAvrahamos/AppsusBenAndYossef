@@ -20,10 +20,11 @@ export function NoteIndex() {
     }
 
     function onRemoveNote(noteId) {
+
         noteService.remove(noteId)
             .then(() => {
                 setNotes((prevNotes) => prevNotes.filter(note => note.id !== noteId))
-                alert('note deleted')
+                alert('note deleted', noteId);
             })
             .catch((err) => alert('note', err))
     }

@@ -7,13 +7,17 @@ export function MiniMizeInput({ setNotToEdit, noteToEdit, setIsExpanded }) {
         setIsExpanded(true)
     }
 
-    return <section className="min-input">
+    return <section className="min-input-container">
 
         <input type="text" placeholder={noteToEdit.type === "NoteTxt" ? "Enter Text.." : "Enter Url.."} />
-        <button onClick={() => onChangeNoteType('NoteTxt')}>Text</button>
-        <button onClick={() => onChangeNoteType('NoteImg')}>Img</button>
-        <button onClick={() => onChangeNoteType('NoteVideo')}>Vid</button>
-
+        <div className="icon-btn-container">
+            <label className="txt-icon" htmlFor="txt"><span className="fa-solid fa-pen"></span></label>
+            <label className="img-icon" htmlFor="img"><span className="fa-regular fa-image"></span></label>
+            <label className="video-icon" htmlFor="video"><span className="fa-solid fa-video"></span></label>
+            <button id="txt" onClick={() => onChangeNoteType('NoteTxt')}></button>
+            <button id="img" onClick={() => onChangeNoteType('NoteImg')}></button>
+            <button id="video" onClick={() => onChangeNoteType('NoteVideo')}></button>
+        </div>
         {/* <button onClick={onChangeNoteType('NoteTodo')}></button> */}
     </section>
 }

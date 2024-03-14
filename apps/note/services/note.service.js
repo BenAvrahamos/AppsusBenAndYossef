@@ -85,7 +85,7 @@ function _createNotes() {
     let notes = storageService.loadFromStorage(NOTE_KEY)
     if (!notes || !notes.length) {
         notes = [{
-            id: 'n101fd',
+            id: utilService.makeId(),
             createdAt: 1112222,
             type: 'NoteTxt',
             isPinned: true,
@@ -96,7 +96,8 @@ function _createNotes() {
             }
         },
         {
-            id: 'n102',
+            id: utilService.makeId(),
+            createdAt: 1112222,
             type: 'NoteImg',
             isPinned: false,
             info: {
