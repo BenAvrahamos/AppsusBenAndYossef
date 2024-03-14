@@ -1,0 +1,94 @@
+.mail-edit-container {
+    position: fixed;
+    bottom: 1%;
+    left: 60%;
+    height: 500px;
+    width: 500px;
+    /* border: solid black 1px; */
+    display: flex;
+    flex-direction: column;
+    box-shadow: -3px -7px 8px 0px rgb(0 0 0 / 0%), 0px -3px 14px 4px rgb(0 0 0 / 22%);
+}
+
+
+.mail-edit-container h1{
+    padding: 10px;
+    box-shadow: 0 0 0px 0px rgb(0 0 0 / 0%), 0px 1px 0px 0px rgb(0 0 0 / 22%);}
+
+.mail-to > *{
+    outline: none;
+    border: 0;
+    
+}
+
+.mail-to {
+flex-direction: row;
+column-gap: 50px;
+padding: 10px;
+box-shadow: 0 0 0px 0px rgb(0 0 0 / 0%), 0px 1px 0px 0px rgb(0 0 0 / 22%);
+    
+}
+
+.mail-to input{
+    outline: none;
+    border: 0;
+    width: max-content;
+    font-size: 1.1em;
+    margin-left: 2px;
+    
+    
+}
+
+.mail-edit-subject{
+    row-gap: 10px;
+    outline: none;
+    border: 0;
+    margin-block: 10px;
+    padding: 10px;
+    width: 100%;
+    box-shadow: 0 0 0px 0px rgb(0 0 0 / 0%), 0px 1px 0px 0px rgb(0 0 0 / 22%);
+}
+
+.mail-edit-details>* {
+    row-gap: 10px;
+    outline: none;
+    border: 0;
+    width: 100%;
+    font-size: 1.05em;
+    box-shadow: 0 0 0px 0px rgb(0 0 0 / 0%), 0px 1px 0px 0px rgb(0 0 0 / 22%);
+}
+
+.mail-edit-details {
+    outline: none;
+    border: 0;
+    width: 100%;
+}
+
+.mail-edit-body {
+    display: flex;
+    flex-grow: 1;
+    resize: none;
+    border: 0;
+    margin-top: 9px;
+    outline: none;
+    /* font-size: 1.1em; */
+    font-family: Arial, Helvetica, sans-serif;
+
+
+}
+
+.mail-edit-container button{
+    width: 7em;
+    height: 3em;
+    margin: 0 0 10px 10px;
+    border-radius: 20px;
+    border: 0;
+    background-color:#0B57D0;
+    color: white;
+    
+}
+
+.mail-edit-container button:hover{
+    box-shadow: -1px 4px 2px 0 rgba(60,64,67,0.302), -1px 1px 2px 5px rgba(60,64,67,0.149);
+    
+}

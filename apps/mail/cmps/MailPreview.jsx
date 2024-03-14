@@ -11,7 +11,6 @@ export function MailPreview({ mail }) {
     const dayName = date.getDate()
     const yearName = date.getFullYear()
     let displayDate = monthName + ' ' + dayName + ' '
-
     if (mail.sentAt + 31536000000 < Date.now()) displayDate +=  ' ' +  yearName
 
     function openMailDetails() {

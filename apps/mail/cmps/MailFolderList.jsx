@@ -2,7 +2,10 @@ const { useState, useEffect } = React
 
 import { mailService } from "../services/mail.service.js";
 
-export function MailFolderList({ filterBy, setFilterBy }) {
+export function MailFolderList({
+    filterBy, setFilterBy,
+    mailEditToggle, setMailEditToggle
+}) {
 
     const [mailCount, setMailCount] = useState(mailService.getEmptyMailCount)
     const [toggledSection, setToggledSection] = useState('inbox')
@@ -52,12 +55,9 @@ export function MailFolderList({ filterBy, setFilterBy }) {
 
 
 
-
-
-
     return <section className="mail-folder-list-container">
 
-        <button className="compose-btn">Compose</button>
+        <button onClick={ () =>setMailEditToggle(mailEditToggle = true)} className="compose-btn">Compose</button>
 
         <section className="folder-options">
 

@@ -2,11 +2,12 @@ const { useNavigate, useParams } = ReactRouter
 const { useState, useEffect } = React
 
 
+
 import { mailService } from "../services/mail.service.js";
 import { utilService } from '../../../services/util.service.js'
 
 export function MailDetails() {
-
+    const navigate = useNavigate()
     const [mail, setMail] = useState()
     const [time, setTime] = useState()
 
