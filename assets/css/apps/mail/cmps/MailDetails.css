@@ -12,7 +12,7 @@
 
 .mail-contacts{
     font-size: 0.75em;
-
+    color: #5f6368;
 }
 
 
@@ -22,7 +22,7 @@
     font-size: 0.75em;
     gap: 10px;
     margin-right :0.5em;
-
+    color: #5f6368;
     align-items: center;
 
 }

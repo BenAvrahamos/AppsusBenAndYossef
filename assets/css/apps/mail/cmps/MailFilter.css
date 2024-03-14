@@ -1,0 +1,16 @@
+.mail-filter  input{
+    border-radius: 50px;
+    height: 3.5em;
+    background-color: #a8c7fa3a;
+    width: 80%; 
+    max-width: 800px; 
+    border: 0;
+    padding: 1em;
+    font-size: 1.2em;
+ 
+
+}
+
+.mail-filter {
+
+}
