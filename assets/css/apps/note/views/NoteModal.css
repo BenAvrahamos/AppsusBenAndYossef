@@ -29,3 +29,57 @@
 .white {
     border: 0.1px black solid;
 }
+
+
+
+
+.edit-input-container {
+    position: absolute;
+}
+
+.edit-input-container .edit-input {
+    width: 80%;
+    height: 70px;
+    border: none;
+    color: #202124;
+    letter-spacing: .01428571em;
+    font-size: .875rem;
+    text-align: left;
+    resize: none;
+}
+
+.edit-btn {
+    background: none;
+    border: none;
+}
+
+.edit-icon {
+    color: #000000;
+    padding: 0.4em;
+    margin-right: 1em;
+}
+
+.edit-icon:hover {
+    background-color: lightgray;
+    border-radius: 50%;
+}
+
+.save-edit-btn {
+    background: none;
+    border: none;
+    position: absolute;
+    top: 93px;
+}
+
+.save-btn-icon {
+    color: #000000;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding: 6px 1px 6px 1px;
+    font-size: 1.1em;
+}
+
+.save-edit-btn:hover {
+    background-color: rgb(224, 174, 140);
+    border-radius: 50%;
+}

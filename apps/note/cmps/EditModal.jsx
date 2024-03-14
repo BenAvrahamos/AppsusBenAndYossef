@@ -26,15 +26,18 @@ export function EditModal({ setIsEditModalOpen, onUpdateNote, note }) {
         setInputImgValue(value)
     }
 
-    return <div>
+    return <div className="edit-input-container">
         {note.type === "NoteTxt" &&
             <form onSubmit={(event) => onSubmitInput(event)}>
-                <input type="text"
+
+                <textarea type="text"
                     placeholder={inputValue}
                     value={inputValue}
                     onChange={(event) => onChangeInput(event.target.value)}
+                    rows="4"
+                    className="edit-input"
                 />
-                <button>Save</button>
+                <button className="save-edit-btn"><span className="fa-solid fa-check save-btn-icon" ></span></button>
             </form>}
         {note.type === "NoteImg" &&
             <form onSubmit={(event) => onSubmitImgInput(event)}>
@@ -43,7 +46,7 @@ export function EditModal({ setIsEditModalOpen, onUpdateNote, note }) {
                     value={inputImgValue}
                     onChange={(event) => onChangeInput(event.target.value)}
                 />
-                <button>Save</button>
+                <button className="save-edit-btn"><span className="fa-solid fa-check save-btn-icon"></span></button>
             </form>}
         {note.type === "NoteVideo" &&
             <form onSubmit={(event) => onSubmitImgInput(event)}>
@@ -52,9 +55,11 @@ export function EditModal({ setIsEditModalOpen, onUpdateNote, note }) {
                     value={inputImgValue}
                     onChange={(event) => onChangeInput(event.target.value)}
                 />
-                <button>Save</button>
+                <button className="save-edit-btn"><span className="fa-solid fa-check"></span></button>
             </form>}
 
     </div>
 
 }
+
+

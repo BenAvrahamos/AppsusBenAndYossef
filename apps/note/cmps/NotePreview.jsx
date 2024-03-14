@@ -35,12 +35,12 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote }) {
             </iframe>
         )}
 
-        {/* <button className="edit-txt" onClick={()=> onChangeTxt(note)}>Edit</button> */}
+
 
         <div className='note-icons-container'>
 
             <button className="color-btn" onClick={() => setIsColorModalOpen(isColorModalOpen => !isColorModalOpen)}><span className="fa-solid fa-palette color-icon"></span></button>
-            <button className="edit-btn" onClick={() => setIsEditModalOpen(isEditModalOpen => !isEditModalOpen)}>edit</button>
+            <button className="edit-btn" onClick={() => setIsEditModalOpen(isEditModalOpen => !isEditModalOpen)}><span className="fa-solid fa-pen-to-square edit-icon"></span></button>
 
             <button className="remove-btn" id="remove" onClick={() => onRemove(note.id)}><span className="fa-solid fa-trash-can remove-icon"></span></button>
         </div>
