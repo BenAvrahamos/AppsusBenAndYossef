@@ -11,7 +11,9 @@ export function NoteIndex() {
 
     useEffect(() => {
         loadNotes()
-    }, [isExpanded])
+    }, [isExpanded, notes])
+
+
 
     function loadNotes() {
         noteService.query()
@@ -40,8 +42,10 @@ export function NoteIndex() {
             })
     }
 
-    if (!notes) return <div>loading...</div>
 
+
+
+    if (!notes) return <div>loading...</div>
     return <section className="note-index-main-container">
 
         <section className="note-add-container">

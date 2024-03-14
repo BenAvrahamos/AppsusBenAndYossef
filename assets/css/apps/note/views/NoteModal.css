@@ -68,7 +68,7 @@
     background: none;
     border: none;
     position: absolute;
-    top: 93px;
+    left: 220px;
 }
 
 .save-btn-icon {
@@ -81,5 +81,21 @@
 
 .save-edit-btn:hover {
     background-color: rgb(224, 174, 140);
+    border-radius: 50%;
+}
+
+.clone-btn {
+    background: none;
+    border: none;
+}
+
+.clone-icon {
+    color: #000000;
+    padding: 0.4em;
+    margin-right: 1em;
+}
+
+.clone-icon:hover {
+    background-color: lightgray;
     border-radius: 50%;
 }
