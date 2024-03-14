@@ -160,8 +160,8 @@ const gMails = [
         isRead: false,
         sentAt: 150000,
         removedAt: null,
-        from: loggedInUser.email,
-        to: "BenAvraham1998@Gmail.com"
+        from: "BenAvraham1998@Gmail.com",
+        to: loggedInUser.email
     },
 
 ]
