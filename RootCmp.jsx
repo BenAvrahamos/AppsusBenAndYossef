@@ -8,6 +8,7 @@ import { MailIndex } from "./apps/mail/views/MailIndex.jsx"
 import { NoteIndex } from "./apps/note/views/NoteIndex.jsx"
 import { MailDetails } from "./apps/mail/cmps/MailDetails.jsx"
 import { MailList } from "./apps/mail/cmps/MailList.jsx"
+import { MailAdd } from "./apps/mail/cmps/MailEdit.jsx"
 
 
 
