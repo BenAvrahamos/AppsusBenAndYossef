@@ -98,6 +98,18 @@ function _createNotes() {
         {
             id: utilService.makeId(),
             createdAt: 1112222,
+            type: 'NoteVideo',
+            isPinned: true,
+            style: {
+                backgroundColor: 'rgb(224 255 255)'
+            },
+            info: {
+                url: "https://www.youtube.com/watch?v=lukT_WB5IB0"
+            }
+        },
+        {
+            id: utilService.makeId(),
+            createdAt: 1112222,
             type: 'NoteImg',
             isPinned: false,
             info: {
