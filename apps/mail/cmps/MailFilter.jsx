@@ -6,12 +6,15 @@ const { useNavigate, useParams } = ReactRouter
 
 export function MailFilter({ filterBy, setFilterBy }) {
 
+ 
+
     const navigate = useNavigate()
 
     function onSubmit(ev) {
         ev.preventDefault()
         navigate('/mail')
     }
+
 
 
 

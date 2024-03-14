@@ -20,7 +20,13 @@ export const mailService = {
     save,
     remove,
     getEmptyMail,
-    getDefaultFilter
+    getDefaultFilter,
+    getUser,
+    getEmptyMailCount,
+}
+
+function getUser() {
+    return loggedInUser
 }
 
 
@@ -35,16 +41,35 @@ function query(filterBy = getDefaultFilter()) {
                     regex.test(mail.from) ||
                     regex.test(mail.to))
             }
-            // if (filterBy.price) {
+            if (filterBy.status === 'inbox') {
 
-            //   books = books.filter(book => book.listPrice.amount >= filterBy.price
-            //   )
-            // }
-            // if (filterBy.publishedDate) {
+                mails = mails.filter(mail => mail.from !== loggedInUser.email
+                )
+            }
+            if (filterBy.isStared) {
 
-            //   books = books.filter(book => book.publishedDate >= filterBy.publishedDate
-            //   )
-            // }
+                mails = mails.filter(mail => mail.isStared
+                )
+            }
+
+            if (filterBy.status === 'sent') {
+
+                mails = mails.filter(mail => mail.from === loggedInUser.email
+                )
+            }
+
+            if (filterBy.status === 'draft') {
+
+                mails = mails.filter(mail => mail.sendAt === null
+                )
+            }
+
+            if (filterBy.status === 'trash') {
+
+                mails = mails.filter(mail => mail.removedAt
+                )
+            }
+
             return mails
         })
 }
@@ -110,6 +135,15 @@ function getDefaultFilter() {
 
 }
 
+function getEmptyMailCount() {
+    return {
+        sent: 0,
+        Starred: 0,
+        draft: 0,
+        trash: 0
+    }
+}
+
 
 const gMails = [
     {
@@ -117,6 +151,7 @@ const gMails = [
         subject: "Sprint 3 Bitch!",
         body: "Lets do this my Man",
         isRead: false,
+        isStared: true,
         sentAt: (1714700499),
         removedAt: null,
         from: loggedInUser.email,

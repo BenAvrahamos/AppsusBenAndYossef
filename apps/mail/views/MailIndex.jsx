@@ -40,7 +40,9 @@ export function MailIndex() {
             filterBy={filterBy}
             setFilterBy={setFilterBy} />
 
-        <MailFolderList />
+        <MailFolderList
+            filterBy={filterBy}
+            setFilterBy={setFilterBy} />
 
         {!mails && <div>loading...</div>}
         {mails && !mailId && <MailList mails={mails} />}
