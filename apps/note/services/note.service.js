@@ -24,14 +24,12 @@ export const noteService = {
     remove,
     save,
     getEmptyNote,
-    // getDefaultFilter,
+
     // getFilterFromParams
 }
 
 
-function query(filterBy = getDefaultFilter()) {
-    // console.log('filterBy', filterBy)
-
+function query() {
     return asyncStorageService.query(NOTE_KEY)
         .then(notes => {
             // if (filterBy.txt) {
@@ -59,7 +57,7 @@ function remove(noteId) {
 }
 
 function save(note) {
- 
+
     if (note.id) {
         return asyncStorageService.put(NOTE_KEY, note)
     } else {
@@ -70,7 +68,6 @@ function save(note) {
 
 function getEmptyNote(txt = '', type = '', url = '') {
     return {
-
         createdAt: Date.now(),
         type,
         isPinned: false,
@@ -111,9 +108,7 @@ function _createNotes() {
             }
         }]
 
-        notes.push(_createNote('Hit me baby'), "NoteTxt")
-
-
+        notes.push(_createNote('Hit me baby', "NoteTxt"))
         storageService.saveToStorage(NOTE_KEY, notes)
     }
 }
@@ -123,29 +118,3 @@ function _createNote(txt, type, url) {
     note.id = utilService.makeId()
     return note
 }
-
-// const notes = [{
-//     id: 'n101',
-//     createdAt: Date.now(),
-//     type: 'NoteTxt',
-//     isPinned:false,
-//     style: {
-//         backgroundColor: '#00d'
-//     }, info: {
-//         txt: 'Fullstack Me Baby!'
-//     }
-// }]
-
-
-// const gog = {
-//     id: 'n102',
-//     type: 'NoteImg',
-//     isPinned: false,
-//     info: {
-//         url: 'http://some-img/me',
-//         title: 'Bobi and Me'
-//     },
-//     style: {
-//         backgroundColor: '#00d'
-//     }
-// }

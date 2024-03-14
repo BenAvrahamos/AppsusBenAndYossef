@@ -1,8 +1,0 @@
-export function NoteList({ note }) {
-
-
-
-
-
-    
-}
