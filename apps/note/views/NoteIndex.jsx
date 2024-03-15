@@ -24,7 +24,6 @@ export function NoteIndex() {
         loadNotes()
     }, [filterBy])
 
-
     function onSetFilter(fieldsToUpdate) {
         setFilterBy(prevFilter => ({ ...prevFilter, ...fieldsToUpdate }))
     }
@@ -32,7 +31,7 @@ export function NoteIndex() {
     function loadNotes() {
         noteService.query(filterBy)
             .then((notes) => {
-                notes.sort((note1, note2) => (note1.isPinned + "").localeCompare(note2.isPinned + "")).reverse()
+                // notes.sort((note1, note2) => (note1.isPinned + "").localeCompare(note2.isPinned + "")).reverse()
                 setNotes(notes)
             })
             .catch((err) => alert(`Failed to load notes: ${err}`))
@@ -69,14 +68,46 @@ export function NoteIndex() {
             />
         </section>
 
-        <section className="note-index-container">
-            {notes.map(note => <article key={note.id}>
-                <NotePreview
-                    note={note}
-                    onRemoveNote={onRemoveNote}
-                    onUpdateNote={onUpdateNote}
-                />
-            </article>)}
-        </section>
+
+
+
+        {notes && notes.some(note => note.isPinned) && (
+            <section className="note-index-container">
+                <h2 className="pinned-unpinned-h2">Pinned</h2>
+
+                {notes.filter(note => note.isPinned).map(note => (
+                    <React.Fragment key={note.id}>
+                        <NotePreview
+                            note={note}
+                            onRemoveNote={onRemoveNote}
+                            onUpdateNote={onUpdateNote}
+                        />
+                    </React.Fragment>))}
+
+            </section>)}
+
+
+        {notes && notes.some(note => note.isPinned) && <hr className='line-hr' />}
+
+
+        {notes && notes.some(note => !note.isPinned) && (
+            <section className="note-index-container">
+
+
+                <h2 className="pinned-unpinned-h2">Unpinned</h2>
+
+                {notes.filter(note => !note.isPinned).map(note => (
+                    <React.Fragment key={note.id}>
+                        <NotePreview
+                            note={note}
+                            onRemoveNote={onRemoveNote}
+                            onUpdateNote={onUpdateNote}
+                        />
+                    </React.Fragment>))}
+            </section>
+
+
+
+        )}
     </section >
 }

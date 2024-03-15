@@ -1,0 +1,19 @@
+@media(width<=830px) {
+
+
+    .note-index-container {
+        columns: 2;
+    }
+
+
+}
+
+@media(width<=540px) {
+
+
+    .note-index-container {
+        columns: 1;
+    }
+
+    /* .icon-btn-container {} */
+}

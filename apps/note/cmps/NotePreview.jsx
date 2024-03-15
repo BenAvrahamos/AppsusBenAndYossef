@@ -2,6 +2,7 @@ const { useState, useEffect } = React
 
 import { ColorModal } from "./ColorModal.jsx"
 import { EditModal } from "./EditModal.jsx"
+import { IsPinned } from "./IsPinned.jsx"
 
 export function NotePreview({ note, onRemoveNote, onUpdateNote }) {
     const [isColorModalOpen, setIsColorModalOpen] = useState(false)
@@ -40,20 +41,22 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote }) {
     }
 
     return (<section className="note" style={note.style}>
+
         {note.type === 'NoteTxt' && <p> {note.info.txt}</p>}
         {note.type === "NoteImg" && <img src={note.info.url} alt={note.info.title} />}
         {note.type === "NoteTodos" &&
-            <ul>
+            <ol>
                 {note.info.todos.map((todo, idx) => (
                     <li key={todo.txt + idx}>
-                        {todo.txt}
                         <input type="checkbox"
                             checked={todo.doneAt !== null}
                             onChange={() => onDoneTodo(todo, idx)}
+                            className="checkbox-todo"
                         />
+                        {todo.txt}
                     </li>
                 ))}
-            </ul>
+            </ol>
         }
         {note.type === "NoteVideo" && (
             <iframe
@@ -73,8 +76,9 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote }) {
             <button className="edit-btn" onClick={() => setIsEditModalOpen(isEditModalOpen => !isEditModalOpen)}><span className="fa-solid fa-pen-to-square edit-icon"></span></button>
 
             <button className="remove-btn" id="remove" onClick={() => onRemove(note.id)}><span className="fa-solid fa-trash-can remove-icon"></span></button>
+            {isColorModalOpen && <ColorModal setIsColorModalOpen={setIsColorModalOpen} onUpdateNote={onUpdateNote} note={note} />}
         </div>
-        {isColorModalOpen && <ColorModal setIsColorModalOpen={setIsColorModalOpen} onUpdateNote={onUpdateNote} note={note} />}
+
         {isEditModalOpen && <EditModal setIsEditModalOpen={setIsEditModalOpen} onUpdateNote={onUpdateNote} note={note} />}
     </section >)
 }

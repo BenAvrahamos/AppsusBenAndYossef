@@ -64,14 +64,10 @@ function remove(noteId) {
 }
 
 function save(note) {
-    console.log(note);
     if (note.id) {
-        console.log(note);
         return asyncStorageService.put(NOTE_KEY, note)
     } else {
         note = _createNote(note.info.txt, note.type, note.info.url, note.style.backgroundColor, note.isPinned, note.info.todos)
-        console.log(note);
-
         return asyncStorageService.post(NOTE_KEY, note)
     }
 }

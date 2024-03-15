@@ -25,7 +25,7 @@ export function NoteVideo({ noteToEdit, setIsExpanded, setNotToEdit }) {
 
 
 
-    return <section className="note-video-container">
+    return <section className="note-video-container note-text-container">
 
 
         <input className="input-add-new-note new-note-container"
@@ -38,6 +38,6 @@ export function NoteVideo({ noteToEdit, setIsExpanded, setNotToEdit }) {
 
 
         <button className="save-new-note-btn" onClick={onSaveNote}>Save</button>
-        {/* <button className="cancel-new-note-btn" onClick={onSetIsClicked}>Cancel</button> */}
+        <button className="cancel-new-note-btn" onClick={() => setIsExpanded(false)}>Cancel</button>
     </section>
 }

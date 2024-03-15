@@ -33,7 +33,7 @@ export function NoteTxt({ noteToEdit, setIsExpanded, setNotToEdit }) {
 
         />
         <button className="save-new-note-btn" onClick={onSaveNote}>Save</button>
-        {/* <button className="cancel-new-note-btn">Cancel</button> */}
+        <button className="cancel-new-note-btn" onClick={() => setIsExpanded(false)}>Cancel</button>
 
     </section>
 }

@@ -34,7 +34,7 @@ export function NoteImg({ noteToEdit, setIsExpanded, setNotToEdit }) {
         />
 
         <button className="save-new-note-btn" onClick={onSaveNote}>Save</button>
-        {/* <button className="cancel-new-note-btn" onClick={onSetIsClicked}>Cancel</button> */}
+        <button className="cancel-new-note-btn" onClick={() => setIsExpanded(false)}>Cancel</button>
 
     </section>
 }
