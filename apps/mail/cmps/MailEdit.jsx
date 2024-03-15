@@ -3,7 +3,7 @@ const { useState, useEffect } = React
 import { mailService } from "../services/mail.service.js";
 
 
-export function MailEdit() {
+export function MailEdit({addMail}) {
 
     const [newMail, editNewMail] = useState(mailService.getEmptyMail)
 
@@ -14,15 +14,14 @@ export function MailEdit() {
 
     function onSendMail(ev){
         ev.preventDefault()
-        // newMail.mailService.save()
-        // .then(console.log(mails))
+        addMail(newMail)
 
     }
 
     return <section className="mail-edit-container">
 
         <h1>New Message</h1>
-        <form onSubmit={onSendMail}>
+        <form id="mailEdit" onSubmit={onSendMail}>
             <div className="mail-edit-details">
 
                 <div className="mail-to">
