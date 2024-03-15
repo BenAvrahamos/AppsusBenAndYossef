@@ -7,7 +7,8 @@ export const utilService = {
     getDayName,
     getMonthName,
     saveToStorage,
-    loadFromStorage
+    loadFromStorage,
+    getRandomDate,
 }
 
 function makeId(length = 6) {
@@ -19,6 +20,12 @@ function makeId(length = 6) {
     }
 
     return txt
+}
+
+function getRandomDate(){
+    return Date.now() -getRandomIntInclusive(1,94608000000)
+
+
 }
 
 function makeLorem(size = 100) {

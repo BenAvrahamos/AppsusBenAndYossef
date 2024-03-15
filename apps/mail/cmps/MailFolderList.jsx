@@ -18,7 +18,7 @@ export function MailFolderList({
     }
 
     useEffect(() => {
-        console.log(filterBy);
+    
 
     }, [filterBy])
 
@@ -27,27 +27,27 @@ export function MailFolderList({
 
         if (toggledSection === 'inbox') {
             setFilterBy(prevFilterBy =>
-                ({ ...prevFilterBy, status: toggledSection, isStared: false }))
+                ({ ...prevFilterBy, status: toggledSection, isStarred: false }))
         }
 
         if (toggledSection === 'starred') {
             setFilterBy(prevFilterBy =>
-                ({ ...prevFilterBy, isStared: true, status: '' }))
+                ({ ...prevFilterBy, isStarred: true, status: '' }))
         }
 
         if (toggledSection === 'sent') {
             setFilterBy(prevFilterBy =>
-                ({ ...prevFilterBy, status: toggledSection, isStared: false }))
+                ({ ...prevFilterBy, status: toggledSection, isStarred: false }))
         }
 
         if (toggledSection === 'draft') {
             setFilterBy(prevFilterBy =>
-                ({ ...prevFilterBy, status: toggledSection, isStared: false }))
+                ({ ...prevFilterBy, status: toggledSection, isStarred: false }))
         }
 
         if (toggledSection === 'trash') {
             setFilterBy(prevFilterBy =>
-                ({ ...prevFilterBy, status: toggledSection, isStared: false }))
+                ({ ...prevFilterBy, status: toggledSection, isStarred: false }))
         }
 
     }, [toggledSection])
