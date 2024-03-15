@@ -1,13 +1,13 @@
 const { useNavigate, useParams } = ReactRouter
 const { useState, useEffect } = React
 
-import { utilService,onRemoveMail} from '../../../services/util.service.js'
+import { utilService, onRemoveMail } from '../../../services/util.service.js'
 
 
-export function MailPreview({ mail,updateMail,removeMail}) {
+export function MailPreview({ mail, updateMail, removeMail }) {
     const navigate = useNavigate()
     const [isRead, toggleIsRead] = useState(mail.isRead)
-    const [isStared, toggleIsStarred] = useState(mail.isStarred)
+    const [isStarred, toggleIsStarred] = useState(mail.isStarred)
 
 
 
@@ -39,27 +39,27 @@ export function MailPreview({ mail,updateMail,removeMail}) {
 
     }
 
-function onSetMailIsStarred(ev) {
-    ev.stopPropagation();
-    const updatedIsStarred = !isStared
-    toggleIsStarred(updatedIsStarred)
-    mail.isStared = updatedIsStarred
-    updateMail(mail)
-}
+    function onSetMailIsStarred(ev) {
+        ev.stopPropagation();
+        const updatedIsStarred = !isStarred
+        toggleIsStarred(updatedIsStarred)
+        mail.isStarred = updatedIsStarred
+        updateMail(mail)
+    }
 
 
 
-    return <article  onClick={openMailDetails} className={`mail-preview `}>
+    return <article onClick={openMailDetails} className={`mail-preview `}>
 
 
         {/* <Route path="/mail/:mailId" element={<MailList />} />  */}
 
 
         <div onClick={onSetMailIsStarred}
-            className={mail.isStarred === true ? 'fa-regular fa-star test' : 'fa-solid fa-star test'}></div>
+            title={mail.isStarred ? 'Not Starred' : 'Starred'} className={mail.isStarred ? 'fa-regular fa-star ' : 'fa-solid fa-star yellow-star'}></div>
 
         <span className={`mail-from ${!mail.isRead ? 'unread' : ''}`}>{mail.from}</span>
-        {/* <div className="mail-content"> */}
+        {/* <div className="mail-subject-body"> */}
         <span className={`mail-subject ${!mail.isRead ? 'unread' : ''}`}>{mail.subject}-</span>
 
         <span className="mail-body">{mail.body}</span>
@@ -69,9 +69,11 @@ function onSetMailIsStarred(ev) {
         <section className="actions ">
 
             <div onClick={onSetMailIsRead}
-                className={mail.isRead === true ? 'fa-regular fa-envelope-open' : 'fa-solid fa-envelope'}>
+                title={mail.isRead ? 'Mark as Read' : 'Mark as Unread'}
+                className={mail.isRead ? 'fa-regular fa-envelope-open' : 'fa-solid fa-envelope '}>
             </div>
-            <div onClick={onRemoveMail} className="fa-solid fa-trash-can"></div>
+            <div onClick={onRemoveMail} 
+           title={mail.removedAt ? 'Delete Mail' : 'Move Mail to Trash'} className="fa-solid fa-trash-can"></div>
         </section>
 
 

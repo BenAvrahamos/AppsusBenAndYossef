@@ -41,11 +41,10 @@ export function MailIndex() {
             setMails(prevMails => prevMails.filter(oldMail => oldMail.id !== mail.id))
             return
         }
-        // const mailId = mail.id
-        // mailService.remove(mail)
-        //     .then(() => {
-        //         setMails((prevMails) => prevMails.filter(mail => mail.id !== mailId))
-        //     })
+        const mailId = mail.id
+        mailService.remove(mailId)
+        setMails(prevMails => prevMails.filter(oldMail => oldMail.id !== mail.id))
+
     }
 
 

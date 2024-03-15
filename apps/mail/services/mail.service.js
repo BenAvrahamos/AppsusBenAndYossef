@@ -46,9 +46,9 @@ function query(filterBy = getDefaultFilter()) {
                 mails = mails.filter(mail => mail.from !== loggedInUser.email && !mail.removedAt)
                 
             }
-            if (filterBy.isStared) {
+            if (filterBy.isStarred) {
 
-                mails = mails.filter(mail => mail.isStared && !mail.removedAt)
+                mails = mails.filter(mail => mail.isStarred && !mail.removedAt)
             }
 
             if (filterBy.status === 'sent') {
@@ -123,7 +123,7 @@ function getDefaultFilter() {
         status: '',
         txt: '',
         isRead: false,
-        isStared: false,
+        isStarred: false,
         labels: ['important', 'romantic']
 
     }
@@ -144,70 +144,247 @@ function getEmptyMailCount() {
 const gMails = [
     {
         id: utilService.makeId(),
-        subject: "Sprint 3 Bitch!",
-        body: "Lets do this my Man",
-        isRead: false,
-        isStared: true,
-        sentAt: (1714700499),
-        removedAt: null,
-        from: loggedInUser.email,
-        to: "Yossef@.gmail.com"
-    },
-    {
-        id: utilService.makeId(),
-        subject: "Cakes CAKES CAKES!",
-        body: "Lets do this my Man",
-        isRead: true,
-        isStared: false,
-        sentAt: Date.now(),
-        removedAt: null,
-        from: loggedInUser.email,
-        to: "Yossef@.gmail.com"
-    },
-    {
-        id: utilService.makeId(),
-        subject: "Sprint 3 Bitch!",
-        body: "In the quiet of the night, Underneath the starry sky, Whispers echo in the breeze, Tales of love and memories. A melody begins to play, Softly dancing, in the fray, Hearts entwined, forever bound, Lost within the sweetest sound."
-        ,
-        isRead: false,
-        sentAt: Date.now(),
-        removedAt: null,
-        isStared: false,
-        from: loggedInUser.email,
-        to: "Yossef@.gmail.com"
-    },
-    {
-        id: utilService.makeId(),
-        subject: "!",
-        body: "The sun dipped below the horizon, casting a warm orange glow across the sky, while birds chirped happily in the trees, and a gentle breeze rustled through the leaves, carrying the scent of fresh flowers.",
-        isRead: true,
-        isStared: true,
-        sentAt: Date.now(),
-        removedAt: null,
-        from: loggedInUser.email,
-        to: "BenAvraham1998@Gmail.com"
-    },
-    {
-        id: utilService.makeId(),
-        subject: "!",
-        body: "The sun dipped below the horizon, casting a warm orange glow across the sky, while birds chirped happily in the trees, and a gentle breeze rustled through the leaves, carrying the scent of fresh flowers.",
+        subject: "Coffee Chat",
+        body: "Hey there! Let's catch up over coffee sometime this week.",
         isRead: false,
         isStarred: true,
-        sentAt: 150000,
+        sentAt: 1743206123,
         removedAt: null,
-        from: "BenAvraham1998@Gmail.com",
-        to: loggedInUser.email
+        from: "john.doe@example.com",
+        to: "alice.smith@example.com"
     },
     {
         id: utilService.makeId(),
-        subject: "!",
-        body: "The sun dipped below the horizon, casting a warm orange glow across the sky, while birds chirped happily in the trees, and a gentle breeze rustled through the leaves, carrying the scent of fresh flowers.",
+        subject: "Project Update",
+        body: "Attached is the latest project update. Please review and provide feedback.",
+        isRead: true,
+        isStarred: false,
+        sentAt: 1750302200,
+        removedAt: null,
+        from: "project.manager@example.com",
+        to: "team@example.com"
+    },
+    {
+        id: utilService.makeId(),
+        subject: "Team Lunch",
+        body: "Hey everyone, let's have a team lunch tomorrow at the new Italian place around the corner.",
+        isRead: false,
+        sentAt: 1750401000,
+        removedAt: null,
+        isStarred: false,
+        from: "office.manager@example.com",
+        to: "team@example.com"
+    },
+    {
+        id: utilService.makeId(),
+        subject: "Reminder: Deadline Approaching",
+        body: "Just a friendly reminder that the deadline for submitting the quarterly report is approaching. Please ensure all data is up to date.",
+        isRead: true,
+        isStarred: true,
+        sentAt: 1750415000,
+        removedAt: null,
+        from: "manager@example.com",
+        to: "reporting.team@example.com"
+    },
+    {
+        id: utilService.makeId(),
+        subject: "Invitation to Webinar",
+        body: "You're invited to our upcoming webinar on 'Effective Time Management Strategies.' Register now to secure your spot.",
         isRead: false,
         isStarred: true,
-        sentAt: 150000,
-        removedAt: 4545457878,
-        from: "BenAvraham1998@Gmail.com",
-        to: loggedInUser.email
+        sentAt: 1750500000,
+        removedAt: null,
+        from: "events@example.com",
+        to: "attendees@example.com"
     },
+    {
+        id: utilService.makeId(),
+        subject: "Weekly Newsletter",
+        body: "Check out our latest newsletter for updates on industry trends and company news.",
+        isRead: false,
+        isStarred: true,
+        sentAt: 1750600000,
+        removedAt: 1750612345,
+        from: "newsletter@example.com",
+        to: "subscribers@example.com"
+    },
+    {
+        id: utilService.makeId(),
+        subject: "Job Opportunity",
+        body: "We have a new job opening for a Senior Software Engineer position. Are you interested?",
+        isRead: false,
+        isStarred: false,
+        sentAt: 1750700000,
+        removedAt: null,
+        from: "hr@example.com",
+        to: "candidates@example.com"
+    },
+    {
+        id: utilService.makeId(),
+        subject: "Meeting Agenda",
+        body: "Attached is the agenda for our upcoming meeting. Please review and come prepared.",
+        isRead: true,
+        isStarred: false,
+        sentAt: 1750800000,
+        removedAt: null,
+        from: "meeting.organizer@example.com",
+        to: "participants@example.com"
+    },
+    {
+        id: utilService.makeId(),
+        subject: "Feedback Request",
+        body: "We value your opinion! Please take a moment to complete our feedback survey.",
+        isRead: false,
+        isStarred: false,
+        sentAt: 1750900000,
+        removedAt: null,
+        from: "feedback@example.com",
+        to: "customers@example.com"
+    },
+    {
+        id: utilService.makeId(),
+        subject: "New Product Launch",
+        body: "Introducing our latest product! Check it out on our website.",
+        isRead: true,
+        isStarred: true,
+        sentAt: 1751000000,
+        removedAt: null,
+        from: "marketing@example.com",
+        to: "subscribers@example.com"
+    },
+    {
+        id: utilService.makeId(),
+        subject: "Holiday Closure Notice",
+        body: "Our office will be closed for the upcoming holiday. We will reopen on [Date].",
+        isRead: true,
+        isStarred: false,
+        sentAt: 1751100000,
+        removedAt: null,
+        from: "office.manager@example.com",
+        to: "all@example.com"
+    },
+    {
+        id: utilService.makeId(),
+        subject: "Training Session",
+        body: "We have scheduled a training session for [Topic]. Please RSVP by [Date].",
+        isRead: false,
+        isStarred: false,
+        sentAt: 1751200000,
+        removedAt: null,
+        from: "training@example.com",
+        to: "participants@example.com"
+    },
+    {
+        id: utilService.makeId(),
+        subject: "Networking Event Invitation",
+        body: "You're invited to our networking event next week. Don't miss this opportunity to connect with industry professionals.",
+        isRead: true,
+        isStarred: true,
+        sentAt: 1751300000,
+        removedAt: null,
+        from: "networking@example.com",
+        to: "invitees@example.com"
+    },
+    {
+        id: utilService.makeId(),
+        subject: "New Project Proposal",
+        body: "We have a new project proposal for [Project Name]. Please review and provide feedback by [Date].",
+        isRead: false,
+        isStarred: true,
+        sentAt: 1751400000,
+        removedAt: null,
+        from: "project.manager@example.com",
+        to: "team@example.com"
+    },
+    {
+        id: utilService.makeId(),
+        subject: "Team Building Activity",
+        body: "Join us for a team building activity this Friday. Details will be shared soon.",
+        isRead: false,
+        isStarred: false,
+        sentAt: 1751500000,
+        removedAt: null,
+        from: "team.leader@example.com",
+        to: "team@example.com"
+    },
+    {
+        id: utilService.makeId(),
+        subject: "Performance Review Reminder",
+        body: "Just a reminder that your performance review is scheduled for [Date]. Please come prepared to discuss your achievements and goals.",
+        isRead: true,
+        isStarred: false,
+        sentAt: 1751600000,
+        removedAt: null,
+        from: "hr@example.com",
+        to: "employees@example.com"
+    },
+    {
+        id: utilService.makeId(),
+        subject: "Urgent: Server Maintenance",
+        body: "We need to perform urgent maintenance on our servers tonight. Expect some downtime.",
+        isRead: false,
+        isStarred: false,
+        sentAt: 1751700000,
+        removedAt: null,
+        from: "it@example.com",
+        to: "team@example.com"
+    },
+        {
+            id: utilService.makeId(),
+            subject: "Project Status Update",
+            body: "I wanted to provide you with an update on the current status of the project. Everything is proceeding according to plan.",
+            isRead: false,
+            isStarred: true,
+            sentAt: 1751800000,
+            removedAt: null,
+            from: "user@appsus.com",
+            to: "team@example.com"
+        },
+        {
+            id: utilService.makeId(),
+            subject: "Feedback Request",
+            body: "We're constantly striving to improve our services. Could you please take a moment to provide us with your feedback?",
+            isRead: true,
+            isStarred: false,
+            sentAt: 1751900000,
+            removedAt: null,
+            from: "user@appsus.com",
+            to: "customerservice@example.com"
+        },
+        {
+            id: utilService.makeId(),
+            subject: "Meeting Agenda",
+            body: "Attached is the agenda for our upcoming meeting. Please review it and let me know if there's anything else you'd like to discuss.",
+            isRead: false,
+            sentAt: 1752000000,
+            removedAt: null,
+            isStarred: false,
+            from: "user@appsus.com",
+            to: "team@example.com"
+        },
+        {
+            id: utilService.makeId(),
+            subject: "Product Update",
+            body: "We've just released a new update for our product. Check it out and let us know what you think!",
+            isRead: true,
+            isStarred: true,
+            sentAt: 1752100000,
+            removedAt: null,
+            from: "user@appsus.com",
+            to: "subscribers@example.com"
+        },
+        {
+            id: utilService.makeId(),
+            subject: "Upcoming Event Reminder",
+            body: "Just a friendly reminder about the upcoming event next week. Don't forget to RSVP!",
+            isRead: false,
+            isStarred: true,
+            sentAt: 1752200000,
+            removedAt: null,
+            from: "user@appsus.com",
+            to: "attendees@example.com"
+        }
+    
 ]
+
 _createMails()
