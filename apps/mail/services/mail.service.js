@@ -148,7 +148,7 @@ const gMails = [
         body: "Hey there! Let's catch up over coffee sometime this week.",
         isRead: false,
         isStarred: true,
-        sentAt: 1743206123,
+        sentAt: utilService.getRandomDate(),
         removedAt: null,
         from: "john.doe@example.com",
         to: "alice.smith@example.com"
@@ -159,7 +159,7 @@ const gMails = [
         body: "Attached is the latest project update. Please review and provide feedback.",
         isRead: true,
         isStarred: false,
-        sentAt: 1750302200,
+        sentAt: utilService.getRandomDate(),
         removedAt: null,
         from: "project.manager@example.com",
         to: "team@example.com"
@@ -169,7 +169,7 @@ const gMails = [
         subject: "Team Lunch",
         body: "Hey everyone, let's have a team lunch tomorrow at the new Italian place around the corner.",
         isRead: false,
-        sentAt: 1750401000,
+        sentAt: utilService.getRandomDate(),
         removedAt: null,
         isStarred: false,
         from: "office.manager@example.com",
@@ -181,7 +181,7 @@ const gMails = [
         body: "Just a friendly reminder that the deadline for submitting the quarterly report is approaching. Please ensure all data is up to date.",
         isRead: true,
         isStarred: true,
-        sentAt: 1750415000,
+        sentAt: utilService.getRandomDate(),
         removedAt: null,
         from: "manager@example.com",
         to: "reporting.team@example.com"
@@ -192,7 +192,7 @@ const gMails = [
         body: "You're invited to our upcoming webinar on 'Effective Time Management Strategies.' Register now to secure your spot.",
         isRead: false,
         isStarred: true,
-        sentAt: 1750500000,
+        sentAt: utilService.getRandomDate(),
         removedAt: null,
         from: "events@example.com",
         to: "attendees@example.com"
@@ -203,7 +203,7 @@ const gMails = [
         body: "Check out our latest newsletter for updates on industry trends and company news.",
         isRead: false,
         isStarred: true,
-        sentAt: 1750600000,
+        sentAt: utilService.getRandomDate(),
         removedAt: 1750612345,
         from: "newsletter@example.com",
         to: "subscribers@example.com"
@@ -214,7 +214,7 @@ const gMails = [
         body: "We have a new job opening for a Senior Software Engineer position. Are you interested?",
         isRead: false,
         isStarred: false,
-        sentAt: 1750700000,
+        sentAt: utilService.getRandomDate(),
         removedAt: null,
         from: "hr@example.com",
         to: "candidates@example.com"
@@ -225,7 +225,7 @@ const gMails = [
         body: "Attached is the agenda for our upcoming meeting. Please review and come prepared.",
         isRead: true,
         isStarred: false,
-        sentAt: 1750800000,
+        sentAt: utilService.getRandomDate(),
         removedAt: null,
         from: "meeting.organizer@example.com",
         to: "participants@example.com"
@@ -236,7 +236,7 @@ const gMails = [
         body: "We value your opinion! Please take a moment to complete our feedback survey.",
         isRead: false,
         isStarred: false,
-        sentAt: 1750900000,
+        sentAt: utilService.getRandomDate(),
         removedAt: null,
         from: "feedback@example.com",
         to: "customers@example.com"
@@ -247,7 +247,7 @@ const gMails = [
         body: "Introducing our latest product! Check it out on our website.",
         isRead: true,
         isStarred: true,
-        sentAt: 1751000000,
+        sentAt: utilService.getRandomDate(),
         removedAt: null,
         from: "marketing@example.com",
         to: "subscribers@example.com"
@@ -258,7 +258,7 @@ const gMails = [
         body: "Our office will be closed for the upcoming holiday. We will reopen on [Date].",
         isRead: true,
         isStarred: false,
-        sentAt: 1751100000,
+        sentAt: utilService.getRandomDate(),
         removedAt: null,
         from: "office.manager@example.com",
         to: "all@example.com"
@@ -269,7 +269,7 @@ const gMails = [
         body: "We have scheduled a training session for [Topic]. Please RSVP by [Date].",
         isRead: false,
         isStarred: false,
-        sentAt: 1751200000,
+        sentAt: utilService.getRandomDate(),
         removedAt: null,
         from: "training@example.com",
         to: "participants@example.com"
@@ -280,7 +280,7 @@ const gMails = [
         body: "You're invited to our networking event next week. Don't miss this opportunity to connect with industry professionals.",
         isRead: true,
         isStarred: true,
-        sentAt: 1751300000,
+        sentAt: utilService.getRandomDate(),
         removedAt: null,
         from: "networking@example.com",
         to: "invitees@example.com"
@@ -291,7 +291,7 @@ const gMails = [
         body: "We have a new project proposal for [Project Name]. Please review and provide feedback by [Date].",
         isRead: false,
         isStarred: true,
-        sentAt: 1751400000,
+        sentAt: utilService.getRandomDate(),
         removedAt: null,
         from: "project.manager@example.com",
         to: "team@example.com"
@@ -302,7 +302,7 @@ const gMails = [
         body: "Join us for a team building activity this Friday. Details will be shared soon.",
         isRead: false,
         isStarred: false,
-        sentAt: 1751500000,
+        sentAt: utilService.getRandomDate(),
         removedAt: null,
         from: "team.leader@example.com",
         to: "team@example.com"
@@ -313,7 +313,7 @@ const gMails = [
         body: "Just a reminder that your performance review is scheduled for [Date]. Please come prepared to discuss your achievements and goals.",
         isRead: true,
         isStarred: false,
-        sentAt: 1751600000,
+        sentAt: utilService.getRandomDate(),
         removedAt: null,
         from: "hr@example.com",
         to: "employees@example.com"
@@ -324,7 +324,7 @@ const gMails = [
         body: "We need to perform urgent maintenance on our servers tonight. Expect some downtime.",
         isRead: false,
         isStarred: false,
-        sentAt: 1751700000,
+        sentAt: utilService.getRandomDate(),
         removedAt: null,
         from: "it@example.com",
         to: "team@example.com"
@@ -335,7 +335,7 @@ const gMails = [
             body: "I wanted to provide you with an update on the current status of the project. Everything is proceeding according to plan.",
             isRead: false,
             isStarred: true,
-            sentAt: 1751800000,
+            sentAt: utilService.getRandomDate(),
             removedAt: null,
             from: "user@appsus.com",
             to: "team@example.com"
@@ -346,7 +346,7 @@ const gMails = [
             body: "We're constantly striving to improve our services. Could you please take a moment to provide us with your feedback?",
             isRead: true,
             isStarred: false,
-            sentAt: 1751900000,
+            sentAt: utilService.getRandomDate(),
             removedAt: null,
             from: "user@appsus.com",
             to: "customerservice@example.com"
@@ -356,7 +356,7 @@ const gMails = [
             subject: "Meeting Agenda",
             body: "Attached is the agenda for our upcoming meeting. Please review it and let me know if there's anything else you'd like to discuss.",
             isRead: false,
-            sentAt: 1752000000,
+            sentAt: utilService.getRandomDate(),
             removedAt: null,
             isStarred: false,
             from: "user@appsus.com",
@@ -368,7 +368,7 @@ const gMails = [
             body: "We've just released a new update for our product. Check it out and let us know what you think!",
             isRead: true,
             isStarred: true,
-            sentAt: 1752100000,
+            sentAt: utilService.getRandomDate(),
             removedAt: null,
             from: "user@appsus.com",
             to: "subscribers@example.com"
@@ -379,7 +379,7 @@ const gMails = [
             body: "Just a friendly reminder about the upcoming event next week. Don't forget to RSVP!",
             isRead: false,
             isStarred: true,
-            sentAt: 1752200000,
+            sentAt: utilService.getRandomDate(),
             removedAt: null,
             from: "user@appsus.com",
             to: "attendees@example.com"
