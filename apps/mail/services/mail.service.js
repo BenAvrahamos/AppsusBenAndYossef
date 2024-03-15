@@ -43,31 +43,27 @@ function query(filterBy = getDefaultFilter()) {
             }
             if (filterBy.status === 'inbox') {
 
-                mails = mails.filter(mail => mail.from !== loggedInUser.email
-                )
+                mails = mails.filter(mail => mail.from !== loggedInUser.email && !mail.removedAt)
+                
             }
             if (filterBy.isStared) {
 
-                mails = mails.filter(mail => mail.isStared
-                )
+                mails = mails.filter(mail => mail.isStared && !mail.removedAt)
             }
 
             if (filterBy.status === 'sent') {
 
-                mails = mails.filter(mail => mail.from === loggedInUser.email
-                )
+                mails = mails.filter(mail => mail.from === loggedInUser.email && !mail.removedAt)
             }
 
             if (filterBy.status === 'draft') {
 
-                mails = mails.filter(mail => mail.sendAt === null
-                )
+                mails = mails.filter(mail => mail.sendAt === null && !mail.removedAt)
             }
 
             if (filterBy.status === 'trash') {
 
-                mails = mails.filter(mail => mail.removedAt
-                )
+                mails = mails.filter(mail => !!mail.removedAt);
             }
 
             return mails
@@ -161,7 +157,8 @@ const gMails = [
         id: utilService.makeId(),
         subject: "Cakes CAKES CAKES!",
         body: "Lets do this my Man",
-        isRead: false,
+        isRead: true,
+        isStared: false,
         sentAt: Date.now(),
         removedAt: null,
         from: loggedInUser.email,
@@ -175,6 +172,7 @@ const gMails = [
         isRead: false,
         sentAt: Date.now(),
         removedAt: null,
+        isStared: false,
         from: loggedInUser.email,
         to: "Yossef@.gmail.com"
     },
@@ -182,7 +180,8 @@ const gMails = [
         id: utilService.makeId(),
         subject: "!",
         body: "The sun dipped below the horizon, casting a warm orange glow across the sky, while birds chirped happily in the trees, and a gentle breeze rustled through the leaves, carrying the scent of fresh flowers.",
-        isRead: false,
+        isRead: true,
+        isStared: true,
         sentAt: Date.now(),
         removedAt: null,
         from: loggedInUser.email,
@@ -193,11 +192,22 @@ const gMails = [
         subject: "!",
         body: "The sun dipped below the horizon, casting a warm orange glow across the sky, while birds chirped happily in the trees, and a gentle breeze rustled through the leaves, carrying the scent of fresh flowers.",
         isRead: false,
+        isStarred: true,
         sentAt: 150000,
         removedAt: null,
         from: "BenAvraham1998@Gmail.com",
         to: loggedInUser.email
     },
-
+    {
+        id: utilService.makeId(),
+        subject: "!",
+        body: "The sun dipped below the horizon, casting a warm orange glow across the sky, while birds chirped happily in the trees, and a gentle breeze rustled through the leaves, carrying the scent of fresh flowers.",
+        isRead: false,
+        isStarred: true,
+        sentAt: 150000,
+        removedAt: 4545457878,
+        from: "BenAvraham1998@Gmail.com",
+        to: loggedInUser.email
+    },
 ]
 _createMails()

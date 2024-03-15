@@ -18,7 +18,7 @@ export function MailFolderList({
     }
 
     useEffect(() => {
-        console.log(filterBy);
+    
 
     }, [filterBy])
 

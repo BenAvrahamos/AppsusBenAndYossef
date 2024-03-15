@@ -19,14 +19,44 @@ export function MailIndex() {
     const [mails, setMails] = useState(null)
     const [mailEditToggle, setMailEditToggle] = useState(false)
 
+
     const { mailId } = useParams()
+
+    function updateMail(mailToUpdate) {
+        mailService.save(mailToUpdate)
+            .then((savedMail) => {
+                setMails(prevMails => prevMails.map(mail => mail.id === savedMail.id ? savedMail : mail),
+                    console.log(mails))
+            })
+
+    }
+
+    function removeMail(mail) {
+        if (!mail.removedAt) {
+            const timeStamp = Date.now()
+            mail.removedAt = timeStamp
+            updateMail(mail)
+            console.log('filterBy', filterBy.status)
+            console.log('removedAt', mail.removedAt)
+            setMails(prevMails => prevMails.filter(oldMail => oldMail.id !== mail.id))
+            return
+        }
+        // const mailId = mail.id
+        // mailService.remove(mail)
+        //     .then(() => {
+        //         setMails((prevMails) => prevMails.filter(mail => mail.id !== mailId))
+        //     })
+    }
 
 
 
     useEffect(() => {
         loadMails()
-
+        console.log(filterBy);
     }, [filterBy])
+
+
+
 
     function loadMails() {
         mailService.query(filterBy)
@@ -50,7 +80,10 @@ export function MailIndex() {
             setMailEditToggle={setMailEditToggle} />
 
         {!mails && <div>loading...</div>}
-        {mails && !mailId && <MailList mails={mails} />}
+        {mails && !mailId && <MailList
+            mails={mails}
+            updateMail={updateMail}
+            removeMail={removeMail} />}
 
         {mailId && <Outlet />}
 
