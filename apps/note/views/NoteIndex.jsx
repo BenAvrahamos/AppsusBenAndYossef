@@ -9,6 +9,8 @@ export function NoteIndex() {
     const [notes, setNotes] = useState(null)
     const [isExpanded, setIsExpanded] = useState(false)
     const [isToggle, setIsToggle] = useState(false)
+    const [filterBy, setFilterBy] = useState(noteService.getDefaultFilter())
+
 
     useEffect(() => {
         loadNotes()
@@ -18,8 +20,17 @@ export function NoteIndex() {
         loadNotes()
     }, [isToggle])
 
+    useEffect(() => {
+        loadNotes()
+    }, [filterBy])
+
+
+    function onSetFilter(fieldsToUpdate) {
+        setFilterBy(prevFilter => ({ ...prevFilter, ...fieldsToUpdate }))
+    }
+
     function loadNotes() {
-        noteService.query()
+        noteService.query(filterBy)
             .then((notes) => {
                 notes.sort((note1, note2) => (note1.isPinned + "").localeCompare(note2.isPinned + "")).reverse()
                 setNotes(notes)
@@ -41,6 +52,7 @@ export function NoteIndex() {
         noteService.save(noteToUpdate)
             .then((savedNote) => {
                 setNotes(prevNotes => prevNotes.map(note => note.id === savedNote.id ? savedNote : note))
+                // loadNotes()
                 setIsToggle(isToggle => !isToggle)
             })
             .catch(err => {
@@ -52,7 +64,9 @@ export function NoteIndex() {
     return <section className="note-index-main-container">
 
         <section className="note-add-container">
-            <AddNote isExpanded={isExpanded} setIsExpanded={setIsExpanded} />
+            <AddNote isExpanded={isExpanded} setIsExpanded={setIsExpanded}
+                onSetFilter={onSetFilter} filterBy={filterBy}
+            />
         </section>
 
         <section className="note-index-container">

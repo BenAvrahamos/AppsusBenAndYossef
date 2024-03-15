@@ -18,6 +18,7 @@
     font-weight: 500;
     /* box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302), 0 2px 6px 2px rgba(60, 64, 67, 0.149); */
     letter-spacing: 0.005em;
+    outline: none;
 }
 
 .min-input-container button {
@@ -27,16 +28,27 @@
 .min-input-container .txt-icon {
     padding: 0.3em;
     margin-right: 1em;
+    border-radius: 50%;
 }
 
 .min-input-container .video-icon {
     margin-right: 1em;
     padding: 0.3em;
+    border-radius: 50%;
 }
 
 .min-input-container .img-icon {
     margin-right: 1em;
     padding: 0.3em;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.min-input-container .todo-icon {
+    margin-right: 1em;
+    padding: 0.3em;
+    border-radius: 50%;
+    transition: 0.3s;
 }
 
 .icon-btn-container {
@@ -49,21 +61,20 @@
 
 .img-icon:hover {
     background-color: lightgray;
-    border-radius: 50%;
     color: black;
-
 }
 
 .txt-icon:hover {
     background-color: lightgray;
-    border-radius: 50%;
     color: black;
-
 }
 
 .video-icon:hover {
     background-color: lightgray;
-    border-radius: 50%;
     color: black;
+}
 
+.todo-icon:hover {
+    background-color: lightgray;
+    color: black;
 }

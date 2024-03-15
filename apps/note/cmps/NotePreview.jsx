@@ -27,14 +27,36 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote }) {
         onUpdateNote(duplicateNote)
     }
 
+    function onDoneTodo(todo, idx) {
+        const updateNote = { ...note }
+        const currTodo = updateNote.info.todos[idx]
+        if (currTodo.doneAt === null) {
+            currTodo.doneAt = Date.now()
+        } else {
+            currTodo.doneAt = null
+        }
+
+        onUpdateNote(note)
+    }
+
     return (<section className="note" style={note.style}>
         {note.type === 'NoteTxt' && <p> {note.info.txt}</p>}
         {note.type === "NoteImg" && <img src={note.info.url} alt={note.info.title} />}
-        {/* {note.type === "NoteTodo"&&} */}
+        {note.type === "NoteTodos" &&
+            <ul>
+                {note.info.todos.map((todo, idx) => (
+                    <li key={todo.txt + idx}>
+                        {todo.txt}
+                        <input type="checkbox"
+                            checked={todo.doneAt !== null}
+                            onChange={() => onDoneTodo(todo, idx)}
+                        />
+                    </li>
+                ))}
+            </ul>
+        }
         {note.type === "NoteVideo" && (
             <iframe
-                width="200"
-                height="200"
                 src={getEmbedUrl(note.info.url)}
                 title="YouTube video player"
                 frameBorder="0"
