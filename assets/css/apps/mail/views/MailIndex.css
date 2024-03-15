@@ -1,1 +1,8 @@
- /* mail index  */
+.noMailsAlert, .loadingAlert {
+ 
+
+ 
+
+    font-size: 2.5em;
+    color: gray;
+}

@@ -3,6 +3,7 @@
  .mail-list-container {
     list-style-type: none; 
     padding: 0;
+    position: relative;
   }
 
   .mail-list-container>*:hover {

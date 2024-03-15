@@ -23,6 +23,7 @@ export const mailService = {
     getDefaultFilter,
     getUser,
     getEmptyMailCount,
+    getTotalMailCount
 }
 
 function getUser() {
@@ -32,6 +33,7 @@ function getUser() {
 
 
 function query(filterBy = getDefaultFilter()) {
+
     return asyncStorageService.query(MAIL_KEY)
         .then(mails => {
             if (filterBy.txt) {
@@ -66,9 +68,17 @@ function query(filterBy = getDefaultFilter()) {
                 mails = mails.filter(mail => !!mail.removedAt);
             }
 
-            return mails.sort((a, b) => (b.sentAt - a.sentAt))
+            const sortedMails = mails.sort((a, b) => (b.sentAt - a.sentAt))
+
+            return  sortedMails
         })
 }
+
+function getTotalMailCount(){
+    return asyncStorageService.query(MAIL_KEY)
+    .then(mails => mails.length)
+}
+
 
 
 function get(mailId) {

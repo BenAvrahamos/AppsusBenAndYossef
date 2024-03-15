@@ -1,24 +1,29 @@
 const { useState, useEffect } = React
+const { useNavigate, useParams } = ReactRouter
 
-import { mailService } from "../services/mail.service.js";
+
+import { mailService, } from "../services/mail.service.js";
 
 export function MailFolderList({
     filterBy, setFilterBy,
-    mailEditToggle, setMailEditToggle
+    mailEditToggle, setMailEditToggle,
+    toggledSection, setToggledSection,
+    mailCount
 }) {
 
-    const [mailCount, setMailCount] = useState(mailService.getEmptyMailCount)
-    const [toggledSection, setToggledSection] = useState('inbox')
+    console.log(mailCount);
 
+    const navigate = useNavigate()
+   
 
     function onSetFilterType(value) {
-
         setToggledSection(value)
+        navigate('/mail')
 
     }
 
     useEffect(() => {
-    
+
 
     }, [filterBy])
 
@@ -57,38 +62,38 @@ export function MailFolderList({
 
     return <section className="mail-folder-list-container">
 
-        <button onClick={ () =>setMailEditToggle(mailEditToggle = true)} className="compose-btn">Compose</button>
+        <button onClick={() => setMailEditToggle(mailEditToggle = true)} className="compose-btn">Compose</button>
 
         <section className="folder-options">
 
             <div
                 className={toggledSection === 'inbox' ? 'selected' : ''}
                 onClick={() => onSetFilterType('inbox')}>Inbox
-                <span className="amount">35</span>
+                <span className="amount">{mailCount}</span>
             </div>
 
             <div
                 className={toggledSection === 'starred' ? 'selected' : ''}
                 onClick={() => onSetFilterType('starred')} id="starred">Starred
-                <span className="amount">35</span>
+                <span className="amount"></span>
             </div>
 
             <div
                 className={toggledSection === 'sent' ? 'selected' : ''}
                 onClick={() => onSetFilterType('sent')}>Sent
-                <span className="amount">35</span>
+                <span className="amount"></span>
             </div>
 
             <div
                 className={toggledSection === 'draft' ? 'selected ' : ''}
                 onClick={() => onSetFilterType('draft')}>Draft
-                <span className="amount">35</span>
+                <span className="amount"></span>
             </div>
 
             <div
                 className={toggledSection === 'trash' ? 'selected' : ''}
                 onClick={() => onSetFilterType('trash')}>Trash <span
-                    className="amount">35</span>
+                    className="amount"></span>
             </div>
 
         </section>
