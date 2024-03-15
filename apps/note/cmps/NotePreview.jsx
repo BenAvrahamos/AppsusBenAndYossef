@@ -2,7 +2,7 @@ const { useState, useEffect } = React
 
 import { ColorModal } from "./ColorModal.jsx"
 import { EditModal } from "./EditModal.jsx"
-import { IsPinned } from "./IsPinned.jsx"
+
 
 export function NotePreview({ note, onRemoveNote, onUpdateNote }) {
     const [isColorModalOpen, setIsColorModalOpen] = useState(false)
