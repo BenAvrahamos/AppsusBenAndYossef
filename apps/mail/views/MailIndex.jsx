@@ -9,21 +9,35 @@ import { MailList } from "../cmps/MailList.jsx";
 import { mailService } from "../services/mail.service.js";
 
 
-
-
-
-
-
 export function MailIndex() {
     const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter)
     const [mails, setMails] = useState(null)
     const [mailEditToggle, setMailEditToggle] = useState(false)
     const [sortBy, setSortBy] = useState({ sortType: 'sendAt', sortOrder: 1 })
-
-
-
+    const [toggledSection, setToggledSection] = useState('inbox')
+    const [mailCount, calcMailCount] = useState('')
 
     useEffect(() => {
+        filterMails()
+
+    }, [sortBy])
+
+
+
+  
+    useEffect(() => {
+
+        mailService.getTotalMailCount()
+        .then(mailCount => {
+            calcMailCount(mailCount)
+        })
+
+
+        console.log(mailCount);
+
+    }, [mails])
+
+    function filterMails() {
         if (mails) {
             const { sortType, sortOrder } = sortBy;
 
@@ -43,11 +57,7 @@ export function MailIndex() {
                 }))
             }
         }
-    }, [sortBy])
-
-
-
-
+    }
 
     const { mailId } = useParams()
 
@@ -62,10 +72,12 @@ export function MailIndex() {
 
     function addMail(mail) {
         mailService.save(mail)
-            .then(savedMail => {
+        .then(savedMail => {
+                setToggledSection('sent')
                 setMails(prevMails => [...prevMails, savedMail])
+                
             })
-
+            
         setMailEditToggle(false)
 
     }
@@ -86,15 +98,10 @@ export function MailIndex() {
 
     }
 
-
-
     useEffect(() => {
         loadMails()
-        console.log(filterBy);
+
     }, [filterBy])
-
-
-
 
     function loadMails() {
         mailService.query(filterBy)
@@ -111,16 +118,20 @@ export function MailIndex() {
             setFilterBy={setFilterBy}
             sortBy={sortBy}
             setSortBy={setSortBy}
-        />
+            />
 
         <MailFolderList
             filterBy={filterBy}
             setFilterBy={setFilterBy}
             mailEditToggle={mailEditToggle}
             setMailEditToggle={setMailEditToggle}
-        />
+            toggledSection={toggledSection}
+            setToggledSection={setToggledSection}
+            mailCount={mailCount}
+            />
 
-        {!mails && <div>loading...</div>}
+            {mails && !mails.length && <div className="noMailsAlert">No Mails to Show</div>}
+        {!mails && <div className="loadingAlert">loading...</div>}
         {mails && !mailId && <MailList
             mails={mails}
             updateMail={updateMail}
@@ -128,9 +139,7 @@ export function MailIndex() {
 
         {mailId && <Outlet />}
 
-        {mailEditToggle && <MailEdit addMail={addMail} />}
-
-
+        {mailEditToggle && <MailEdit addMail={addMail} setMailEditToggle={setMailEditToggle} />}
 
     </section>
 }

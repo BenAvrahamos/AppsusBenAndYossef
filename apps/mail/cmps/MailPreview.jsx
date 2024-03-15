@@ -2,12 +2,15 @@ const { useNavigate, useParams } = ReactRouter
 const { useState, useEffect } = React
 
 import { utilService, onRemoveMail } from '../../../services/util.service.js'
+import { mailService } from "../services/mail.service.js";
 
 
 export function MailPreview({ mail, updateMail, removeMail }) {
     const navigate = useNavigate()
     const [isRead, toggleIsRead] = useState(mail.isRead)
     const [isStarred, toggleIsStarred] = useState(mail.isStarred)
+
+    const user = mailService.getUser()
 
 
 
@@ -58,7 +61,7 @@ export function MailPreview({ mail, updateMail, removeMail }) {
         <div onClick={onSetMailIsStarred}
             title={mail.isStarred ? 'Not Starred' : 'Starred'} className={mail.isStarred ? 'fa-regular fa-star ' : 'fa-solid fa-star yellow-star'}></div>
 
-        <span className={`mail-from ${!mail.isRead ? 'unread' : ''}`}>{mail.from}</span>
+        <span className={`mail-from ${!mail.isRead ? 'unread' : ''}`}>{mail.from === user.email ? 'Me' : mail.from}</span>
         {/* <div className="mail-subject-body"> */}
         <span className={`mail-subject ${!mail.isRead ? 'unread' : ''}`}>{mail.subject}-</span>
 

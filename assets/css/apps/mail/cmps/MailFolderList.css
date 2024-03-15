@@ -1,4 +1,4 @@
-.mail-folder-list-container {}
+
 
 .compose-btn {
     margin-left: 5px;
@@ -21,22 +21,25 @@
 .folder-options {
     display: flex;
     flex-direction: column;
-   
     width: 200px;
 
 
 }
 
+
+.inbox{
+    flex-grow: 1;
+}
+
 .folder-options>* {
-    /* border: 1px solid black; */
-    padding-block: 5px;
-    border-radius: 0 20px 20px 0;
-    padding-inline: 15px;
-    padding-block: 8px;
     display: flex;
-    justify-content: space-between;
+    border-radius: 0 20px 20px 0;
+    padding-inline: 20px;
+    padding-block: 6px;
+}
 
-
+.folder-options .fa-solid{
+    width: 2em;
 }
 
 

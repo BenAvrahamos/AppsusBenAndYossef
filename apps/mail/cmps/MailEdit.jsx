@@ -3,7 +3,7 @@ const { useState, useEffect } = React
 import { mailService } from "../services/mail.service.js";
 
 
-export function MailEdit({addMail}) {
+export function MailEdit({addMail,setMailEditToggle}) {
 
     const [newMail, editNewMail] = useState(mailService.getEmptyMail)
 
@@ -13,6 +13,7 @@ export function MailEdit({addMail}) {
     }
 
     function onSendMail(ev){
+        newMail.isRead= true
         ev.preventDefault()
         addMail(newMail)
 
@@ -40,7 +41,7 @@ export function MailEdit({addMail}) {
 
 
             <button className="send-btn">Send</button>
-            <button className="close-btn">close</button>
+            <button type="button" onClick={()=> setMailEditToggle(false)} className="close-btn">close</button>
         </form>
 
 

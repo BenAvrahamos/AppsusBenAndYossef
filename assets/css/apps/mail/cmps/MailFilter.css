@@ -1,13 +1,18 @@
 .mail-filter  input{
     border-radius: 50px;
-    height: 3.5em;
+    height: 2em;
     background-color: #a8c7fa3a;
     width: 80%; 
-    max-width: 800px; 
+    max-width: 500px; 
     border: 0;
     padding: 1em;
     font-size: 1.2em;
- 
+    outline: none;
+
+}
+
+.mail-filter  input:focus{
+    box-shadow: 0 1px 6px rgba(32, 33, 36, 0.603);
 
 }
 

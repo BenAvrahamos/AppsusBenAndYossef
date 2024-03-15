@@ -1,5 +1,8 @@
 /* Setup */
 
+
+
+
 @import './setup/variables.css';
 @import './setup/fonts.css';
 
@@ -15,6 +18,7 @@
 @import './apps/note/views/NoteIndex.css';
 @import './apps/note/views/NoteAddInput.css';
 @import './apps/note/views/NoteModal.css';
+@import './apps/mail/views/MailIndex.css';
 @import './apps/note/views/Notes.css';
 @import './apps/note/views/AddNotes.css';
 @import './apps/note/views/MqNotes.css';
