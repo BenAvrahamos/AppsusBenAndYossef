@@ -1,0 +1,121 @@
+.color-change-container {
+    position: relative;
+
+}
+
+.color-red {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    /* padding: 12px; */
+}
+
+.color-picker-container {
+    position: absolute;
+    display: flex;
+    padding: 8px;
+    flex-direction: row;
+    top: 70px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px -1px 2px 0 rgba(60, 64, 67, 0.302), 0px 4px 6px 2px rgba(60, 64, 67, 0.149);
+}
+
+.color-red:hover {
+    border: 2px black solid;
+}
+
+.white {
+    border: 0.1px black solid;
+}
+
+
+
+
+.edit-input-container {
+    position: absolute;
+}
+
+.edit-input-container .edit-input {
+    width: 80%;
+    height: 70px;
+    border: none;
+    color: #202124;
+    letter-spacing: .01428571em;
+    font-size: .875rem;
+    text-align: left;
+    resize: none;
+}
+
+.edit-btn {
+    background: none;
+    border: none;
+}
+
+.edit-icon {
+    color: #000000;
+    padding: 0.4em;
+    margin-right: 1em;
+}
+
+.edit-icon:hover {
+    background-color: lightgray;
+    border-radius: 50%;
+}
+
+.save-edit-btn {
+    background: none;
+    border: none;
+    position: absolute;
+    left: 220px;
+}
+
+.save-btn-icon {
+    color: #000000;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding: 6px 1px 6px 1px;
+    font-size: 1.1em;
+}
+
+.save-edit-btn:hover {
+    background-color: rgb(224, 174, 140);
+    border-radius: 50%;
+}
+
+.clone-btn {
+    background: none;
+    border: none;
+}
+
+.clone-icon {
+    color: #000000;
+    padding: 0.4em;
+    margin-right: 1em;
+}
+
+.clone-icon:hover {
+    background-color: lightgray;
+    border-radius: 50%;
+}
+
+.pin-btn {
+    background: none;
+    border: none;
+}
+
+.pin-icon {
+    padding: 0.4em;
+    margin-right: 1em;
+
+    /* border: 0.1px lightgray solid; */
+    /* box-shadow: 0px -1px 2px 0 rgba(60, 64, 67, 0.302), 0px 4px 6px 2px rgba(60, 64, 67, 0.149);
+    border-radius: 50%; */
+}
+
+.pin-icon:hover {
+    background-color: lightgray;
+    border-radius: 50%;
+
+}

@@ -57,7 +57,6 @@ function remove(noteId) {
 }
 
 function save(note) {
-
     if (note.id) {
         return asyncStorageService.put(NOTE_KEY, note)
     } else {
@@ -70,7 +69,7 @@ function getEmptyNote(txt = '', type = '', url = '') {
     return {
         createdAt: Date.now(),
         type,
-        isPinned: false,
+        isPinned: true,
         style: {
             backgroundColor: '#ffffff'
         },
@@ -85,7 +84,7 @@ function _createNotes() {
     let notes = storageService.loadFromStorage(NOTE_KEY)
     if (!notes || !notes.length) {
         notes = [{
-            id: 'n101fd',
+            id: utilService.makeId(),
             createdAt: 1112222,
             type: 'NoteTxt',
             isPinned: true,
@@ -96,7 +95,20 @@ function _createNotes() {
             }
         },
         {
-            id: 'n102',
+            id: utilService.makeId(),
+            createdAt: 1112222,
+            type: 'NoteVideo',
+            isPinned: true,
+            style: {
+                backgroundColor: 'rgb(224 255 255)'
+            },
+            info: {
+                url: "https://www.youtube.com/watch?v=lukT_WB5IB0"
+            }
+        },
+        {
+            id: utilService.makeId(),
+            createdAt: 1112222,
             type: 'NoteImg',
             isPinned: false,
             info: {
