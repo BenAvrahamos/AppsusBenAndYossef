@@ -14,7 +14,7 @@ export function MailFolderList({
     console.log(mailCount);
 
     const navigate = useNavigate()
-   
+
 
     function onSetFilterType(value) {
         setToggledSection(value)
@@ -62,37 +62,35 @@ export function MailFolderList({
 
     return <section className="mail-folder-list-container">
 
-        <button onClick={() => setMailEditToggle(mailEditToggle = true)} className="compose-btn">Compose</button>
 
+        <button onClick={() => setMailEditToggle(mailEditToggle = true)} className="compose-btn"><div className="fa-solid fa-pencil"></div>Compose</button>
         <section className="folder-options">
-
             <div
                 className={toggledSection === 'inbox' ? 'selected' : ''}
-                onClick={() => onSetFilterType('inbox')}>Inbox
-                <span className="amount">{mailCount}</span>
+                onClick={() => onSetFilterType('inbox')}><div className="fa-solid fa-inbox"></div><span className="inbox">Inbox</span><span className="amount">{mailCount}</span>
             </div>
-
             <div
                 className={toggledSection === 'starred' ? 'selected' : ''}
-                onClick={() => onSetFilterType('starred')} id="starred">Starred
+                onClick={() => onSetFilterType('starred')} id="starred"><div className="fa-solid fa-star"></div>Starred
                 <span className="amount"></span>
             </div>
 
             <div
                 className={toggledSection === 'sent' ? 'selected' : ''}
-                onClick={() => onSetFilterType('sent')}>Sent
+                onClick={() => onSetFilterType('sent')}><div className="fa-solid fa-paper-plane"></div>Sent
                 <span className="amount"></span>
             </div>
 
             <div
+
                 className={toggledSection === 'draft' ? 'selected ' : ''}
-                onClick={() => onSetFilterType('draft')}>Draft
+                onClick={() => onSetFilterType('draft')}><div className="fa-solid fa-file"></div>Draft
                 <span className="amount"></span>
             </div>
 
             <div
                 className={toggledSection === 'trash' ? 'selected' : ''}
-                onClick={() => onSetFilterType('trash')}>Trash <span
+                onClick={() => onSetFilterType('trash')}><div className="fa-solid fa-trash-can"></div>Trash <span
                     className="amount"></span>
             </div>
 
