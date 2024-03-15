@@ -44,7 +44,7 @@ function query(filterBy = getDefaultFilter()) {
             if (filterBy.status === 'inbox') {
 
                 mails = mails.filter(mail => mail.from !== loggedInUser.email && !mail.removedAt)
-                
+
             }
             if (filterBy.isStarred) {
 
@@ -66,7 +66,7 @@ function query(filterBy = getDefaultFilter()) {
                 mails = mails.filter(mail => !!mail.removedAt);
             }
 
-            return mails
+            return mails.sort((a, b) => (b.sentAt - a.sentAt))
         })
 }
 
@@ -83,6 +83,7 @@ function save(mail) {
     if (mail.id) {
         return asyncStorageService.put(MAIL_KEY, mail)
     } else {
+        mail.id = utilService.makeId()
         return asyncStorageService.post(MAIL_KEY, mail)
     }
 }
@@ -98,7 +99,7 @@ function getEmptyMail(
 ) {
 
     return {
-        id: utilService.makeId(),
+
         subject,
         body,
         isRead,
@@ -329,62 +330,62 @@ const gMails = [
         from: "it@example.com",
         to: "team@example.com"
     },
-        {
-            id: utilService.makeId(),
-            subject: "Project Status Update",
-            body: "I wanted to provide you with an update on the current status of the project. Everything is proceeding according to plan.",
-            isRead: false,
-            isStarred: true,
-            sentAt: utilService.getRandomDate(),
-            removedAt: null,
-            from: "user@appsus.com",
-            to: "team@example.com"
-        },
-        {
-            id: utilService.makeId(),
-            subject: "Feedback Request",
-            body: "We're constantly striving to improve our services. Could you please take a moment to provide us with your feedback?",
-            isRead: true,
-            isStarred: false,
-            sentAt: utilService.getRandomDate(),
-            removedAt: null,
-            from: "user@appsus.com",
-            to: "customerservice@example.com"
-        },
-        {
-            id: utilService.makeId(),
-            subject: "Meeting Agenda",
-            body: "Attached is the agenda for our upcoming meeting. Please review it and let me know if there's anything else you'd like to discuss.",
-            isRead: false,
-            sentAt: utilService.getRandomDate(),
-            removedAt: null,
-            isStarred: false,
-            from: "user@appsus.com",
-            to: "team@example.com"
-        },
-        {
-            id: utilService.makeId(),
-            subject: "Product Update",
-            body: "We've just released a new update for our product. Check it out and let us know what you think!",
-            isRead: true,
-            isStarred: true,
-            sentAt: utilService.getRandomDate(),
-            removedAt: null,
-            from: "user@appsus.com",
-            to: "subscribers@example.com"
-        },
-        {
-            id: utilService.makeId(),
-            subject: "Upcoming Event Reminder",
-            body: "Just a friendly reminder about the upcoming event next week. Don't forget to RSVP!",
-            isRead: false,
-            isStarred: true,
-            sentAt: utilService.getRandomDate(),
-            removedAt: null,
-            from: "user@appsus.com",
-            to: "attendees@example.com"
-        }
-    
+    {
+        id: utilService.makeId(),
+        subject: "Project Status Update",
+        body: "I wanted to provide you with an update on the current status of the project. Everything is proceeding according to plan.",
+        isRead: false,
+        isStarred: true,
+        sentAt: utilService.getRandomDate(),
+        removedAt: null,
+        from: "user@appsus.com",
+        to: "team@example.com"
+    },
+    {
+        id: utilService.makeId(),
+        subject: "Feedback Request",
+        body: "We're constantly striving to improve our services. Could you please take a moment to provide us with your feedback?",
+        isRead: true,
+        isStarred: false,
+        sentAt: utilService.getRandomDate(),
+        removedAt: null,
+        from: "user@appsus.com",
+        to: "customerservice@example.com"
+    },
+    {
+        id: utilService.makeId(),
+        subject: "Meeting Agenda",
+        body: "Attached is the agenda for our upcoming meeting. Please review it and let me know if there's anything else you'd like to discuss.",
+        isRead: false,
+        sentAt: utilService.getRandomDate(),
+        removedAt: null,
+        isStarred: false,
+        from: "user@appsus.com",
+        to: "team@example.com"
+    },
+    {
+        id: utilService.makeId(),
+        subject: "Product Update",
+        body: "We've just released a new update for our product. Check it out and let us know what you think!",
+        isRead: true,
+        isStarred: true,
+        sentAt: utilService.getRandomDate(),
+        removedAt: null,
+        from: "user@appsus.com",
+        to: "subscribers@example.com"
+    },
+    {
+        id: utilService.makeId(),
+        subject: "Upcoming Event Reminder",
+        body: "Just a friendly reminder about the upcoming event next week. Don't forget to RSVP!",
+        isRead: false,
+        isStarred: true,
+        sentAt: utilService.getRandomDate(),
+        removedAt: null,
+        from: "user@appsus.com",
+        to: "attendees@example.com"
+    }
+
 ]
 
 _createMails()

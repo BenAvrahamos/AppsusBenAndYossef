@@ -9,7 +9,7 @@ import { MailList } from "../cmps/MailList.jsx";
 import { mailService } from "../services/mail.service.js";
 
 
-console.log();
+
 
 
 
@@ -18,6 +18,35 @@ export function MailIndex() {
     const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter)
     const [mails, setMails] = useState(null)
     const [mailEditToggle, setMailEditToggle] = useState(false)
+    const [sortBy, setSortBy] = useState({ sortType: 'sendAt', sortOrder: 1 })
+
+
+
+
+    useEffect(() => {
+        if (mails) {
+            const { sortType, sortOrder } = sortBy;
+
+            if (sortType === 'sentAt') {
+                setMails(prevMailOrder => prevMailOrder.slice().sort((a, b) => (b[sortType] - a[sortType]) * sortOrder));
+            }
+
+            if (sortType === 'subject') {
+                setMails(prevMailOrder => prevMailOrder.slice().sort((a, b) => {
+
+                    const itemA = a[sortType]
+                    const itemB = b[sortType]
+
+                    if (itemA < itemB) return -1 * sortOrder
+                    if (itemA > itemB) return 1 * sortOrder
+                    return 0;
+                }))
+            }
+        }
+    }, [sortBy])
+
+
+
 
 
     const { mailId } = useParams()
@@ -28,6 +57,16 @@ export function MailIndex() {
                 setMails(prevMails => prevMails.map(mail => mail.id === savedMail.id ? savedMail : mail),
                     console.log(mails))
             })
+
+    }
+
+    function addMail(mail) {
+        mailService.save(mail)
+            .then(savedMail => {
+                setMails(prevMails => [...prevMails, savedMail])
+            })
+
+        setMailEditToggle(false)
 
     }
 
@@ -70,13 +109,16 @@ export function MailIndex() {
         <MailFilter
             filterBy={filterBy}
             setFilterBy={setFilterBy}
+            sortBy={sortBy}
+            setSortBy={setSortBy}
         />
 
         <MailFolderList
             filterBy={filterBy}
             setFilterBy={setFilterBy}
             mailEditToggle={mailEditToggle}
-            setMailEditToggle={setMailEditToggle} />
+            setMailEditToggle={setMailEditToggle}
+        />
 
         {!mails && <div>loading...</div>}
         {mails && !mailId && <MailList
@@ -86,7 +128,7 @@ export function MailIndex() {
 
         {mailId && <Outlet />}
 
-        {mailEditToggle && <MailEdit />}
+        {mailEditToggle && <MailEdit addMail={addMail} />}
 
 
 
