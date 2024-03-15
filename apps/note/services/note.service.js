@@ -69,7 +69,7 @@ function getEmptyNote(txt = '', type = '', url = '') {
     return {
         createdAt: Date.now(),
         type,
-        isPinned: false,
+        isPinned: true,
         style: {
             backgroundColor: '#ffffff'
         },

@@ -1,10 +1,7 @@
-const { useState } = React
+const { useState, useEffect } = React
 
 import { ColorModal } from "./ColorModal.jsx"
 import { EditModal } from "./EditModal.jsx"
-
-import { noteService } from "../../services/note.service.js"
-import { utilService } from "../../../services/util.service.js"
 
 export function NotePreview({ note, onRemoveNote, onUpdateNote }) {
     const [isColorModalOpen, setIsColorModalOpen] = useState(false)
@@ -20,19 +17,14 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote }) {
         return (match && match[2].length === 11) ? `https://www.youtube.com/embed/${match[2]}` : ''
     }
 
-
-    // function onSaveNote(duplicateNote) {
-    //     noteService.save(duplicateNote)
-    //         .then(() => {
-    //             alert('Note saved')
-    //         })
-    //         .catch(err => alert(`Could not save note: ${err}`))
-    // }
+    function onTogglePin(note) {
+        const updatedNote = { ...note, isPinned: !note.isPinned }
+        onUpdateNote(updatedNote)
+    }
 
     function onDuplicateNote(note) {
         const duplicateNote = { ...note, id: '', createdAt: Date.now() }
         onUpdateNote(duplicateNote)
-
     }
 
     return (<section className="note" style={note.style}>
@@ -51,9 +43,9 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote }) {
             </iframe>
         )}
 
-
-
         <div className='note-icons-container'>
+            {!note.isPinned && <button className="pin-btn" onClick={() => onTogglePin(note)}><span className="fa-solid fa-thumbtack pin-icon" style={{ color: '#64606069' }}></span></button>}
+            {note.isPinned && <button className="pin-btn" onClick={() => onTogglePin(note)}><span className="fa-solid fa-thumbtack pin-icon"></span></button>}
             <button className="clone-btn" onClick={() => onDuplicateNote(note)}><span className="fa-regular fa-copy clone-icon"></span></button>
             <button className="color-btn" onClick={() => setIsColorModalOpen(isColorModalOpen => !isColorModalOpen)}><span className="fa-solid fa-palette color-icon"></span></button>
             <button className="edit-btn" onClick={() => setIsEditModalOpen(isEditModalOpen => !isEditModalOpen)}><span className="fa-solid fa-pen-to-square edit-icon"></span></button>
