@@ -1,45 +1,43 @@
-.mail-specifics{
+.mail-specifics {
     display: flex;
     justify-content: space-between;
 
 }
 
-.mail-details-container header{
+.mail-details-container header {
     display: flex;
     flex-direction: column;
     gap: 10px;
     font-size: 1.5em;
     margin-block: 1em;
     background-color: white;
-   
+
 }
 
-.mail-contacts{
+.mail-contacts {
     font-size: 0.75em;
     color: #5f6368;
 }
 
-
-
-.mail-actions{
+.mail-actions {
     display: flex;
     font-size: 0.75em;
     gap: 10px;
-    margin-right :2em;
+    margin-right: 2em;
     color: #5f6368;
     align-items: center;
 
 
 }
 
-.mail-content{
+.mail-content {
     margin-top: 3em;
     font-size: 1.5em;
 
     width: 40vw;
 }
 
-.mail-actions button{
-height: max-content;
+.mail-actions button {
+    height: max-content;
 
 }

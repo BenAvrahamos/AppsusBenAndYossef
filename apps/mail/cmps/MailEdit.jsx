@@ -1,7 +1,6 @@
-const { useState, useEffect } = React
+const { useState } = React
 
 import { mailService } from "../services/mail.service.js";
-
 
 export function MailEdit({ addMail, setMailEditToggle }) {
 
@@ -20,9 +19,6 @@ export function MailEdit({ addMail, setMailEditToggle }) {
     }
 
     return <section className="mail-edit-container">
-
-
-       
 
         <div className="mail-edit-header">
             <h1>New Message</h1>
@@ -45,14 +41,9 @@ export function MailEdit({ addMail, setMailEditToggle }) {
             <textarea className="mail-edit-body" name="body"
                 onChange={handleChange} value={newMail.body} placeholder="Body" cols="50" rows="10"></textarea>
 
-
             <button className="send-btn">Send</button>
         </form>
 
-
-
-
     </section>
-
 
 }

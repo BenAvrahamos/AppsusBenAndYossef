@@ -1,9 +1,8 @@
-const { useNavigate, useParams } = ReactRouter
-const { useState, useEffect } = React
+const { useNavigate } = ReactRouter
+const { useState } = React
 
-import { utilService, onRemoveMail } from '../../../services/util.service.js'
+import { utilService } from '../../../services/util.service.js'
 import { mailService } from "../services/mail.service.js";
-
 
 export function MailPreview({ mail, updateMail, removeMail }) {
     const navigate = useNavigate()
@@ -11,8 +10,6 @@ export function MailPreview({ mail, updateMail, removeMail }) {
     const [isStarred, toggleIsStarred] = useState(mail.isStarred)
 
     const user = mailService.getUser()
-
-
 
     const date = new Date(mail.sentAt)
     const monthName = utilService.getMonthName(date).slice(0, 3)
@@ -23,10 +20,7 @@ export function MailPreview({ mail, updateMail, removeMail }) {
 
     function openMailDetails() {
         navigate(`/mail/${mail.id}`)
-
     }
-
-
 
     function onSetMailIsRead(ev) {
         ev.stopPropagation();
@@ -39,7 +33,6 @@ export function MailPreview({ mail, updateMail, removeMail }) {
     function onRemoveMail(ev) {
         ev.stopPropagation()
         removeMail(mail)
-
     }
 
     function onSetMailIsStarred(ev) {
@@ -50,23 +43,17 @@ export function MailPreview({ mail, updateMail, removeMail }) {
         updateMail(mail)
     }
 
-
-
     return <article onClick={openMailDetails} className={`mail-preview `}>
-
-
-        {/* <Route path="/mail/:mailId" element={<MailList />} />  */}
-
 
         <div onClick={onSetMailIsStarred}
             title={mail.isStarred ? 'Not Starred' : 'Starred'} className={mail.isStarred ? 'fa-regular fa-star ' : 'fa-solid fa-star yellow-star'}></div>
 
         <span className={`mail-from ${!mail.isRead ? 'unread' : ''}`}>{mail.from === user.email ? 'Me' : mail.from}</span>
-        {/* <div className="mail-subject-body"> */}
+
         <span className={`mail-subject ${!mail.isRead ? 'unread' : ''}`}>{mail.subject}-</span>
 
         <span className="mail-body">{mail.body}</span>
-        {/* </div> */}
+
         <span className="mail-sent-at">{displayDate}</span>
 
         <section className="actions ">
@@ -75,11 +62,9 @@ export function MailPreview({ mail, updateMail, removeMail }) {
                 title={mail.isRead ? 'Mark as Read' : 'Mark as Unread'}
                 className={mail.isRead ? 'fa-regular fa-envelope-open' : 'fa-solid fa-envelope '}>
             </div>
-            <div onClick={onRemoveMail} 
-           title={mail.removedAt ? 'Delete Mail' : 'Move Mail to Trash'} className="fa-solid fa-trash-can"></div>
+            <div onClick={onRemoveMail}
+                title={mail.removedAt ? 'Delete Mail' : 'Move Mail to Trash'} className="fa-solid fa-trash-can"></div>
         </section>
-
-
     </article>
 }
 

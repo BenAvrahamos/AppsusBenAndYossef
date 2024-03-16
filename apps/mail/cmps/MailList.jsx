@@ -1,29 +1,17 @@
-const { useState, useEffect } = React
-
 import { MailPreview } from "./MailPreview.jsx";
-import { mailService } from "../services/mail.service.js";
 
-
-
-export function MailList({ mails,updateMail,removeMail }) {
-
-
+export function MailList({ mails, updateMail, removeMail }) {
 
     return (
         <ul className="mail-list-container">
-            {mails.map(mail =>(
-                <li key ={mail.id}>
-                    <MailPreview 
-                    mail ={mail}
-                    updateMail={updateMail}
-                    removeMail={removeMail}/>
-
+            {mails.map(mail => (
+                <li key={mail.id}>
+                    <MailPreview
+                        mail={mail}
+                        updateMail={updateMail}
+                        removeMail={removeMail} />
                 </li>
-
-
             ))}
         </ul>
-
     )
-
 }

@@ -21,9 +21,6 @@
     display: flex;
    justify-content: space-around;
    width: 300px;
-   
-     
-
 }
 
 .sort-actions > *{
@@ -32,6 +29,4 @@ border-radius: 20px;
 font-size: 0.9em;
 height: 1.5em;
 width: 6em;
-     
-
 }

@@ -1,6 +1,6 @@
 const { useState, useEffect } = React
-const { Link, Outlet, NavLink, useSearchParams } = ReactRouterDOM
-const { useNavigate, useParams } = ReactRouter
+const { Outlet, useSearchParams } = ReactRouterDOM
+const { useParams } = ReactRouter
 
 
 import { MailEdit } from "../cmps/MailEdit.jsx";
@@ -26,17 +26,12 @@ export function MailIndex() {
         filterMails()
     }, [sortBy])
 
-
-
-
     useEffect(() => {
 
         mailService.getTotalMailCount()
             .then(mailCount => {
                 calcMailCount(mailCount)
             })
-
-
 
     }, [mails])
 
@@ -69,7 +64,6 @@ export function MailIndex() {
             .then((savedMail) => {
                 setMails(prevMails => prevMails.map(mail => mail.id === savedMail.id ? savedMail : mail))
             })
-
     }
 
     function addMail(mail) {
@@ -132,7 +126,6 @@ export function MailIndex() {
             setToggledSection={setToggledSection}
             mailCount={mailCount}
         />
-
 
         {mails && !mails.length && <div className="noMailsAlert">No Mails to Show</div>}
         {mails && !mailId && <MailList

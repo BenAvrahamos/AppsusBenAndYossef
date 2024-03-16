@@ -1,5 +1,5 @@
 const { Link, NavLink } = ReactRouterDOM
-const { useState, useEffect } = React
+const { useState } = React
 
 export function AppHeader() {
 
@@ -36,10 +36,6 @@ export function AppHeader() {
 
         </section>}
 
-
     </header>
-
-
-
 
 }

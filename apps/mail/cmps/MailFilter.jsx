@@ -1,14 +1,6 @@
-import { mailService } from "../services/mail.service.js";
-const { useNavigate, useParams } = ReactRouter
-
-
-
-
-
+const { useNavigate } = ReactRouter
 
 export function MailFilter({ filterBy, setFilterBy, sortBy, setSortBy }) {
-
-
 
     const navigate = useNavigate()
 
@@ -16,9 +8,6 @@ export function MailFilter({ filterBy, setFilterBy, sortBy, setSortBy }) {
         ev.preventDefault()
         navigate('/mail')
     }
-
-
-
 
     function handleChange({ target }) {
 
@@ -28,17 +17,13 @@ export function MailFilter({ filterBy, setFilterBy, sortBy, setSortBy }) {
 
     }
 
-
     return <section className="mail-filter">
         <form onSubmit={onSubmit}>
-
-
 
             <input type="text"
                 placeholder="Search for Mail by Subject / Body / Address..."
                 value={filterBy.txt}
                 onChange={handleChange} />
-
 
             <section className="sort-actions">
                 <button onClick={() => setSortBy(prevSortBy => ({ ...prevSortBy, sortType: 'sentAt', sortOrder: prevSortBy.sortOrder * -1 }))}
@@ -50,6 +35,5 @@ export function MailFilter({ filterBy, setFilterBy, sortBy, setSortBy }) {
         </form>
 
     </section>
-
 
 }

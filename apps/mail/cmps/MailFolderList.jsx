@@ -1,8 +1,8 @@
-const { useState, useEffect } = React
-const { useNavigate, useParams } = ReactRouter
+const { useEffect } = React
+const { useNavigate } = ReactRouter
 
 
-import { mailService, } from "../services/mail.service.js";
+
 
 export function MailFolderList({
     filterBy, setFilterBy,
@@ -11,24 +11,13 @@ export function MailFolderList({
     mailCount
 }) {
 
-    function toggleFolderOptions() {
-
-    }
-
     const navigate = useNavigate()
-
 
     function onSetFilterType(value) {
         setToggledSection(value)
         navigate('/mail')
 
     }
-
-    useEffect(() => {
-
-
-    }, [filterBy])
-
 
     useEffect(() => {
 
@@ -59,15 +48,7 @@ export function MailFolderList({
 
     }, [toggledSection])
 
-
-
-
     return <section className="mail-folder-list-container">
-
-
-
-
-
 
         <section className="compact-mail-folder-list-container">
 
@@ -101,12 +82,9 @@ export function MailFolderList({
                     onClick={() => onSetFilterType('trash')}><div className="fa-solid fa-trash-can"></div>
                 </div>
 
-
-
             </section>
 
         </section>
-
 
         <button onClick={() => setMailEditToggle(mailEditToggle = true)} className="compose-btn"><div className="fa-solid fa-pencil"></div>Compose</button>
 
@@ -144,6 +122,5 @@ export function MailFolderList({
         </section>
 
     </section>
-
 
 }
