@@ -83,3 +83,22 @@
     color: #FFD500;
 
 }
+
+.mail-preview .fa-star:hover,
+.actions .fa-trash-can:hover,
+.fa-envelope-open:hover,
+.fa-envelope:hover {
+    background-color: rgba(126, 124, 124, 0.466);
+}
+
+.mail-preview .fa-star,
+.actions .fa-trash-can,
+.fa-envelope-open,
+.fa-envelope {
+    width: 2em;
+    height: 2em;
+    text-align: center;
+    transition: 0.2s;
+    border-radius: 50%;
+    padding: 6px;
+}

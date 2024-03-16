@@ -41,3 +41,20 @@
     height: max-content;
 
 }
+
+.return-btn {
+    display: flex;
+    width: 1.5em;
+    height: 1.5em;
+    text-align: center;
+    justify-content: center;
+    transition: 0.2s;
+    border-radius: 50%;
+    flex-direction: column;
+}
+
+.return-btn:hover {
+    background-color: #5f636849;
+    cursor: pointer;
+
+}

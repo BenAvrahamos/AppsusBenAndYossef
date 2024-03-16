@@ -29,4 +29,11 @@ border-radius: 20px;
 font-size: 0.9em;
 height: 1.5em;
 width: 6em;
+transition: 0.2s;
 }
+
+.sort-actions > *:hover{
+    box-shadow: 0 1px 6px rgba(32, 33, 36, 0.603);
+
+    cursor: pointer;
+    }

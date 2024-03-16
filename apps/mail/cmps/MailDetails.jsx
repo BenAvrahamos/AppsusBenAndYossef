@@ -38,7 +38,7 @@ export function MailDetails() {
     if (!mail) return <div><Loading /></div>
     return <section className="mail-details-container">
         <header >
-            <div onClick={onReturn}><span className="fa-solid fa-arrow-left"></span></div>
+            <div className="return-btn" onClick={onReturn}><span className="fa-solid fa-arrow-left"></span></div>
             {mail.subject}
         </header>
         <section className="mail-specifics">

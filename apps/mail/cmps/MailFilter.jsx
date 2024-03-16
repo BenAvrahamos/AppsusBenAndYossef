@@ -25,6 +25,7 @@ export function MailFilter({ filterBy, setFilterBy, sortBy, setSortBy }) {
                 value={filterBy.txt}
                 onChange={handleChange} />
 
+
             <section className="sort-actions">
                 <button onClick={() => setSortBy(prevSortBy => ({ ...prevSortBy, sortType: 'sentAt', sortOrder: prevSortBy.sortOrder * -1 }))}
                     className={`sort-sentAt ${sortBy.sortType === `sentAt` ? 'selected' : ''}`}>Date <span className="fa-solid fa-sort"></span></button>
@@ -35,5 +36,6 @@ export function MailFilter({ filterBy, setFilterBy, sortBy, setSortBy }) {
         </form>
 
     </section>
+
 
 }
