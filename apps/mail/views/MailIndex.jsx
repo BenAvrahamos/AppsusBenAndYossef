@@ -1,6 +1,7 @@
 const { useState, useEffect } = React
-const { Link, Outlet, NavLink } = ReactRouterDOM
+const { Link, Outlet, NavLink, useSearchParams } = ReactRouterDOM
 const { useNavigate, useParams } = ReactRouter
+
 
 import { MailEdit } from "../cmps/MailEdit.jsx";
 import { MailFilter } from "../cmps/MailFilter.jsx";
@@ -9,8 +10,11 @@ import { MailList } from "../cmps/MailList.jsx";
 import { mailService } from "../services/mail.service.js";
 
 
+
+
 export function MailIndex() {
-    const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter)
+    const [searchParams, setSearchParams] = useSearchParams()
+    const [filterBy, setFilterBy] = useState(mailService.getFilterFromParams(searchParams))
     const [mails, setMails] = useState(null)
     const [mailEditToggle, setMailEditToggle] = useState(false)
     const [sortBy, setSortBy] = useState({ sortType: 'sendAt', sortOrder: 1 })
@@ -18,19 +22,19 @@ export function MailIndex() {
     const [mailCount, calcMailCount] = useState('')
 
     useEffect(() => {
+        setSearchParams(filterBy)
         filterMails()
-
     }, [sortBy])
 
 
 
-  
+
     useEffect(() => {
 
         mailService.getTotalMailCount()
-        .then(mailCount => {
-            calcMailCount(mailCount)
-        })
+            .then(mailCount => {
+                calcMailCount(mailCount)
+            })
 
 
         console.log(mailCount);
@@ -72,12 +76,12 @@ export function MailIndex() {
 
     function addMail(mail) {
         mailService.save(mail)
-        .then(savedMail => {
+            .then(savedMail => {
                 setToggledSection('sent')
                 setMails(prevMails => [...prevMails, savedMail])
-                
+
             })
-            
+
         setMailEditToggle(false)
 
     }
@@ -99,11 +103,12 @@ export function MailIndex() {
     }
 
     useEffect(() => {
-        loadMails()
+        setSearchParams(filterBy)
+        loadMails(filterBy)
 
     }, [filterBy])
 
-    function loadMails() {
+    function loadMails(filterBy) {
         mailService.query(filterBy)
             .then((mails) => {
                 setMails(mails)
@@ -118,7 +123,7 @@ export function MailIndex() {
             setFilterBy={setFilterBy}
             sortBy={sortBy}
             setSortBy={setSortBy}
-            />
+        />
 
         <MailFolderList
             filterBy={filterBy}
@@ -128,9 +133,9 @@ export function MailIndex() {
             toggledSection={toggledSection}
             setToggledSection={setToggledSection}
             mailCount={mailCount}
-            />
+        />
 
-            {mails && !mails.length && <div className="noMailsAlert">No Mails to Show</div>}
+        {mails && !mails.length && <div className="noMailsAlert">No Mails to Show</div>}
         {!mails && <div className="loadingAlert">loading...</div>}
         {mails && !mailId && <MailList
             mails={mails}

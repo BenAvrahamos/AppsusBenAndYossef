@@ -23,7 +23,8 @@ export const mailService = {
     getDefaultFilter,
     getUser,
     getEmptyMailCount,
-    getTotalMailCount
+    getTotalMailCount,
+    getFilterFromParams
 }
 
 function getUser() {
@@ -129,14 +130,21 @@ function _createMails() {
     }
 }
 
+function getFilterFromParams(searchParams = {}) {
+    const defaultFilter = getDefaultFilter()
+    return {
+        status: searchParams.get('status') || defaultFilter.status,
+        txt: searchParams.get('txt') || defaultFilter.txt,
+    }
+}
+
+
 function getDefaultFilter() {
     return {
         status: '',
         txt: '',
         isRead: false,
         isStarred: false,
-        labels: ['important', 'romantic']
-
     }
 
 

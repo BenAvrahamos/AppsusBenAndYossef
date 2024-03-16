@@ -1,10 +1,13 @@
 const { useState, useEffect } = React
+const { useNavigate, useParams } = ReactRouter
 
 import { ColorModal } from "./ColorModal.jsx"
 import { EditModal } from "./EditModal.jsx"
 
 
 export function NotePreview({ note, onRemoveNote, onUpdateNote }) {
+    const navigate = useNavigate()
+
     const [isColorModalOpen, setIsColorModalOpen] = useState(false)
     const [isEditModalOpen, setIsEditModalOpen] = useState(false)
 
@@ -16,6 +19,11 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote }) {
         const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/
         const match = url.match(regExp)
         return (match && match[2].length === 11) ? `https://www.youtube.com/embed/${match[2]}` : ''
+    }
+
+    function onNoteToMail(noteId) {
+        navigate(`/mail/edit${noteId}`)
+
     }
 
     function onTogglePin(note) {
@@ -74,7 +82,6 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote }) {
             <button className="clone-btn" onClick={() => onDuplicateNote(note)}><span className="fa-regular fa-copy clone-icon"></span></button>
             <button className="color-btn" onClick={() => setIsColorModalOpen(isColorModalOpen => !isColorModalOpen)}><span className="fa-solid fa-palette color-icon"></span></button>
             <button className="edit-btn" onClick={() => setIsEditModalOpen(isEditModalOpen => !isEditModalOpen)}><span className="fa-solid fa-pen-to-square edit-icon"></span></button>
-
             <button className="remove-btn" id="remove" onClick={() => onRemove(note.id)}><span className="fa-solid fa-trash-can remove-icon"></span></button>
             {isColorModalOpen && <ColorModal setIsColorModalOpen={setIsColorModalOpen} onUpdateNote={onUpdateNote} note={note} />}
         </div>

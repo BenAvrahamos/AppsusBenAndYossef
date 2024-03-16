@@ -5,9 +5,13 @@
 }
 
 .mail-details-container header{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     font-size: 1.5em;
     margin-block: 1em;
     background-color: white;
+   
 }
 
 .mail-contacts{
@@ -21,9 +25,10 @@
     display: flex;
     font-size: 0.75em;
     gap: 10px;
-    margin-right :0.5em;
+    margin-right :2em;
     color: #5f6368;
     align-items: center;
+
 
 }
 

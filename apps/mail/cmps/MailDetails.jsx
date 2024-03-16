@@ -18,6 +18,11 @@ export function MailDetails() {
 
     }, [])
 
+    function onReturn(){
+        navigate('/mail')
+        
+    }
+
     function calcTime(mail) {
         let dateString = new Date(mail.sentAt).toUTCString()
         dateString = dateString.split(' ').slice(0, 4).join(' ')
@@ -35,7 +40,10 @@ export function MailDetails() {
 
     if (!mail) return <div className="loadingAlert">loading</div>
     return <section className="mail-details-container">
-        <header >{mail.subject}</header>
+        <header >
+            <div onClick={onReturn}><span className="fa-solid fa-arrow-left"></span></div>
+            {mail.subject}
+        </header>
         <section className="mail-specifics">
 
             <div className="mail-contacts">
@@ -45,10 +53,7 @@ export function MailDetails() {
 
             <div className="mail-actions">
                 <p className="mail-sendAt">{time}</p>
-                <button></button>
-                <button></button>
-                <button></button>
-                <button></button>
+
             </div>
         </section>
 
