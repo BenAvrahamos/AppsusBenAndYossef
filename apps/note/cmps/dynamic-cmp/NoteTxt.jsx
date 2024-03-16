@@ -1,6 +1,6 @@
 
 import { noteService } from "../../services/note.service.js"
-
+import { showErrorMsg, showSuccessMsg } from "../../../../services/event-bus.service.js";
 export function NoteTxt({ noteToEdit, setIsExpanded, setNotToEdit }) {
 
     function handleChange({ target }) {
@@ -17,10 +17,13 @@ export function NoteTxt({ noteToEdit, setIsExpanded, setNotToEdit }) {
     function onSaveNote() {
         noteService.save(noteToEdit)
             .then(() => {
-                alert('Note saved')
+                showSuccessMsg(`Note saved successfully`)
                 setIsExpanded(false)
             })
-            .catch(err => alert(`Could not save note: ${err}`))
+            .catch(err => {
+                showErrorMsg(`Could not save`)
+                console.log(`Could not save note: ${err}`)
+            })
     }
 
     return <section className="note-text-container">

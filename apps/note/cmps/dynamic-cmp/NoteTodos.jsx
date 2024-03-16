@@ -1,6 +1,7 @@
 const { useState, useEffect } = React
 
 import { noteService } from "../../services/note.service.js"
+import { showErrorMsg, showSuccessMsg } from "../../../../services/event-bus.service.js";
 
 export function NoteTodos({ noteToEdit, setIsExpanded, setNotToEdit }) {
     const [todoInput, setTodoInput] = useState('')
@@ -33,10 +34,13 @@ export function NoteTodos({ noteToEdit, setIsExpanded, setNotToEdit }) {
 
         noteService.save(updatedNote)
             .then(() => {
-                alert('Note saved')
+                showSuccessMsg(`Note saved successfully`)
                 setIsExpanded(false)
             })
-            .catch(err => alert(`Could not save note: ${err}`))
+            .catch(err => {
+                showErrorMsg(`Could not save`)
+                console.log(`Could not save note: ${err}`)
+            })
     }
 
     return <section className="note-todos-container note-text-container">

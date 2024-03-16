@@ -1,11 +1,13 @@
  /* note index */
 
+
  .note-index-container {
     font-family: Roboto, Arial, sans-serif;
     columns: 4;
     column-gap: 1em;
     margin: 2em;
     position: relative;
+
  }
 
  .inputs-container {
