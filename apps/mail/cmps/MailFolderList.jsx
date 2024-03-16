@@ -66,9 +66,7 @@ export function MailFolderList({
 
 
 
-        {/* <button onClick={() => toggleFolderOptions(mailEditToggle = true)} className="ham-btn">HAM</button>
 
-        <div className="backdrop"></div> */}
 
 
         <section className="compact-mail-folder-list-container">
@@ -77,32 +75,32 @@ export function MailFolderList({
 
             <section className="compact-options">
 
-            <div
-                className={toggledSection === 'inbox' ? 'selected' : ''}
-                onClick={() => onSetFilterType('inbox')}><div className="fa-solid fa-inbox"></div>
-            </div>
+                <div
+                    className={toggledSection === 'inbox' ? 'selected' : ''}
+                    onClick={() => onSetFilterType('inbox')}><div className="fa-solid fa-inbox"></div>
+                </div>
 
-            <div
-                className={toggledSection === 'starred' ? 'selected' : ''}
-                onClick={() => onSetFilterType('starred')} id="starred"><div className="fa-solid fa-star"></div>
-            </div>
+                <div
+                    className={toggledSection === 'starred' ? 'selected' : ''}
+                    onClick={() => onSetFilterType('starred')} id="starred"><div className="fa-solid fa-star"></div>
+                </div>
 
-            <div
-                className={toggledSection === 'sent' ? 'selected' : ''}
-                onClick={() => onSetFilterType('sent')}><div className="fa-solid fa-paper-plane"></div>
-            </div>
+                <div
+                    className={toggledSection === 'sent' ? 'selected' : ''}
+                    onClick={() => onSetFilterType('sent')}><div className="fa-solid fa-paper-plane"></div>
+                </div>
 
-            <div
+                <div
 
-                className={toggledSection === 'draft' ? 'selected ' : ''}
-                onClick={() => onSetFilterType('draft')}><div className="fa-solid fa-file"></div>
-            </div>
+                    className={toggledSection === 'draft' ? 'selected ' : ''}
+                    onClick={() => onSetFilterType('draft')}><div className="fa-solid fa-file"></div>
+                </div>
 
-            <div
-                className={toggledSection === 'trash' ? 'selected' : ''}
-                onClick={() => onSetFilterType('trash')}><div className="fa-solid fa-trash-can"></div>
-            </div>
-                
+                <div
+                    className={toggledSection === 'trash' ? 'selected' : ''}
+                    onClick={() => onSetFilterType('trash')}><div className="fa-solid fa-trash-can"></div>
+                </div>
+
 
 
             </section>

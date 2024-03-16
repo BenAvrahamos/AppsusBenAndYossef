@@ -7,11 +7,11 @@ export function About() {
         <p>Ad excepturi volu unde veniam voluptas accusamus est nesciunt reprehenderit facilis, placeat vel animi in esse eos ipsam dicta.</p>
         <section>
             <div>
-                <img src="assets\img\logo.PNG" alt="" />
+                <img className="profile" src="assets\img\Ben.PNG" alt="" />
                 <p>Ad excepturi volu unde veniam voluptas accusamus est nesciunt reprehenderit facilis, placeat vel animi in esse eos ipsam dicta.</p>
             </div>
             <div>
-                <img src="assets\img\logo.PNG" alt="" />
+                <img className="profile" src="assets\img\Yossef.PNG" alt="" />
                 <p>Ad excepturi volu unde veniam voluptas accusamus est nesciunt reprehenderit facilis, placeat vel animi in esse eos ipsam dicta.</p>
             </div>
         </section>

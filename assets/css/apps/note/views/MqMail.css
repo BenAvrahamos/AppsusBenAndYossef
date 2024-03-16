@@ -1,6 +1,6 @@
 @media (width <=890px) {
 
-    .mail-edit-container{
+    .mail-edit-container {
         font-size: 130%;
         left: 0;
         height: 92vh;
@@ -12,30 +12,34 @@
     }
 
 
-    .mail-index-container{
-        grid-template-columns: 50px 2fr ;
-        
+    .mail-index-container {
+        grid-template-columns: 50px 2fr;
+
     }
 
-    .mail-from{
+    .mail-from {
         max-width: 12em;
         min-width: 12em;
         margin-inline: 1.3em;
     }
 
+    .mail-edit-body {
+
+        height: 69vh;
+
+    }
 
 
-
-    .mail-folder-list-container > * {
+    .mail-folder-list-container>* {
         display: none;
 
 
 
     }
 
-    .compact-mail-folder-list-container{
+    .compact-mail-folder-list-container {
         display: block;
-      
+
     }
 
 
@@ -46,11 +50,51 @@
 
 @media (width <=500px) {
 
-    .mail-preview{
+
+    .compact-nav {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        display: flex;
+        background-color: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        border-radius: 40px 3px 40px 40px;
+        transition: 0.3s;
+        z-index: 1000;
+
+    }
+
+    .compact-nav ul>* {
+        display: flex;
+        justify-content: space-between;
+        text-align: center;
+
+
+
+    }
+
+    .compact-nav ul li>* {
+
+        padding: 5px;
+        border-radius: 10px;
+
+    }
+
+    .compact-nav ul li>*:hover {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        background-color: rgba(128, 128, 128, 0.137);
+
+    }
+
+    .main-nav {
+        display: none;
+    }
+
+    .mail-preview {
         height: 6em;
     }
 
-    .mail-body{
+    .mail-body {
         display: none;
     }
 
@@ -62,8 +106,26 @@
         text-overflow: ellipsis;
     }
 
+    .compact-btn {
+        display: block;
+        position: absolute;
+        right: 6px;
+        top: 3px;
+        color: lightgray;
+        transition: 0.3s;
+        padding: 8px;
+        border-radius: 50%;
+      
+    }
 
+    .compact-btn:hover {
+        color: black;
+        background-color: lightgray;
 
+    }
 
+    .compact-btn span {
+        font-size: 1.7em;
+    }
 
 }
