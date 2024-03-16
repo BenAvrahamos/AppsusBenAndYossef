@@ -5,6 +5,7 @@ import { NotePreview } from "../cmps/NotePreview.jsx"
 
 import { noteService } from "../services/note.service.js"
 import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js";
+import { Loading } from "../cmps/Loading.jsx";
 export function NoteIndex() {
     const [notes, setNotes] = useState(null)
     const [isExpanded, setIsExpanded] = useState(false)
@@ -64,7 +65,9 @@ export function NoteIndex() {
             })
     }
 
-    if (!notes) return <div>loading...</div>
+
+
+    if (!notes) return <div><Loading /></div>
     return <section className="note-index-main-container">
 
         <section className="note-add-container">

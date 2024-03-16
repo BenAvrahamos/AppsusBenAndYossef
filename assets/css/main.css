@@ -11,6 +11,7 @@
 @import './basics/base.css';
 @import './basics/helpers.css';
 @import './basics/layout.css';
+@import './basics/spotify.css';
 
 /* Views */
 @import './views/home.css';

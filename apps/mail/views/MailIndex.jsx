@@ -5,6 +5,7 @@ const { useNavigate, useParams } = ReactRouter
 
 
 import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js";
+import { Loading } from "../../note/cmps/Loading.jsx";
 import { MailEdit } from "../cmps/MailEdit.jsx";
 import { MailFilter } from "../cmps/MailFilter.jsx";
 import { MailFolderList } from "../cmps/MailFolderList.jsx";
@@ -138,7 +139,8 @@ export function MailIndex() {
         />
 
         {mails && !mails.length && <div className="noMailsAlert">No Mails to Show</div>}
-        {!mails && <div className="loadingAlert">loading...</div>}
+        {/* {!mails && <div className="loadingAlert">loading...</div>} */}
+        {!mails && <div><Loading /></div>}
         {mails && !mailId && <MailList
             mails={mails}
             updateMail={updateMail}
