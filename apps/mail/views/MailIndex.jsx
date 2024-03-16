@@ -3,6 +3,8 @@ const { Link, Outlet, NavLink, useSearchParams } = ReactRouterDOM
 const { useNavigate, useParams } = ReactRouter
 
 
+
+import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js";
 import { MailEdit } from "../cmps/MailEdit.jsx";
 import { MailFilter } from "../cmps/MailFilter.jsx";
 import { MailFolderList } from "../cmps/MailFolderList.jsx";
@@ -79,7 +81,7 @@ export function MailIndex() {
             .then(savedMail => {
                 setToggledSection('sent')
                 setMails(prevMails => [...prevMails, savedMail])
-
+                showSuccessMsg(`Mail Sent`)
             })
 
         setMailEditToggle(false)
@@ -90,14 +92,14 @@ export function MailIndex() {
         if (!mail.removedAt) {
             const timeStamp = Date.now()
             mail.removedAt = timeStamp
+            showSuccessMsg(`Mail Moved to Trash`)
             updateMail(mail)
-            console.log('filterBy', filterBy.status)
-            console.log('removedAt', mail.removedAt)
             setMails(prevMails => prevMails.filter(oldMail => oldMail.id !== mail.id))
             return
         }
         const mailId = mail.id
         mailService.remove(mailId)
+        showSuccessMsg(`Mail Deleted`)
         setMails(prevMails => prevMails.filter(oldMail => oldMail.id !== mail.id))
 
     }

@@ -1,5 +1,17 @@
 @media (width <=890px) {
 
+    .about div {
+
+        flex-direction: column;
+    
+    }
+    
+    .about div p{
+        margin: 0;
+        margin-top: 1em;
+        text-align: center;
+    }
+
     .mail-edit-container {
         font-size: 130%;
         left: 0;

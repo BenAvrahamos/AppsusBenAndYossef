@@ -10,11 +10,15 @@
 .about h1 {
     text-decoration: underline;
     margin-bottom: 20px;
+    font-size: 2em;
 }
 
 .about p {
-    margin: 10px auto;
-    width: 60vw;
+    margin: 30px auto;
+    font-weight: bold;
+    font-size: 1.3em;
+
+    width: 96vw;
 }
 
 
@@ -24,6 +28,9 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
     padding: 20px;
     border-radius: 10px;
+    color: gray;
+    align-items: center;
+
 
 }
 
@@ -35,8 +42,7 @@
 
 .about div p {
     display: flex;
-    /* margin: 0;
-    margin-top: 60px; */
+    font-size: 1.2em;
     margin:  0 60px 0 20px;
     text-align: start;
 
