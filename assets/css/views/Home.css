@@ -1,33 +1,29 @@
- /* home */
- * {
-     box-sizing: border-box;
- }
 
- .home {
-     margin-top: 2em;
-     text-align: center;
- }
+.home {
+    margin-top: 2em;
+    text-align: center;
+}
 
- .home h1 {
-     font-size: 2em;
-     letter-spacing: 0.1em;
-     margin-bottom: 1em;
-     text-decoration: underline;
- }
+.home h1 {
+    font-size: 2em;
+    letter-spacing: 0.1em;
+    margin-bottom: 1em;
+    text-decoration: underline;
+}
 
- .img-home-container {
-     display: flex;
-     flex-direction: column;
-     width: 320px;
-     margin: 0 auto;
+.img-home-container {
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    margin: 0 auto;
 
- }
+}
 
- .img-home-container>* {
-     transition: 0.4s;
-     border-radius: 15px;
- }
+.img-home-container>* {
+    transition: 0.4s;
+    border-radius: 15px;
+}
 
- .img-home-container > *:hover {
-    transform: scale(1.1) rotate(10deg);
+.img-home-container > *:hover {
+   transform: scale(1.1) rotate(10deg);
 }
