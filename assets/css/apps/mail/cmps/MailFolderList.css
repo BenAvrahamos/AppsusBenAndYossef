@@ -58,3 +58,34 @@
     font-weight:bold;
     background-color: rgba(33, 177, 221, 0.404);
 }
+
+/* .backdrop{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(128, 128, 128, 0.274);
+    z-index: 10;
+    position: absolute;
+    top: 0%;
+} */
+
+.compact-mail-folder-list-container .compose-btn{
+    width: 3.2em;
+  
+}
+
+.compact-mail-folder-list-container{
+    display: none;
+  
+}
+
+
+.compact-options >*{
+    display: flex;
+    width: 3em;
+    height:3em ;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+
+
+}

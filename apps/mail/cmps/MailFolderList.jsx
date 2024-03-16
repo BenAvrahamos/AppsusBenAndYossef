@@ -11,7 +11,9 @@ export function MailFolderList({
     mailCount
 }) {
 
-    console.log(mailCount);
+    function toggleFolderOptions() {
+
+    }
 
     const navigate = useNavigate()
 
@@ -63,8 +65,55 @@ export function MailFolderList({
     return <section className="mail-folder-list-container">
 
 
+
+        {/* <button onClick={() => toggleFolderOptions(mailEditToggle = true)} className="ham-btn">HAM</button>
+
+        <div className="backdrop"></div> */}
+
+
+        <section className="compact-mail-folder-list-container">
+
+            <button onClick={() => setMailEditToggle(mailEditToggle = true)} className="compose-btn"><div className="fa-solid fa-pencil"></div></button>
+
+            <section className="compact-options">
+
+            <div
+                className={toggledSection === 'inbox' ? 'selected' : ''}
+                onClick={() => onSetFilterType('inbox')}><div className="fa-solid fa-inbox"></div>
+            </div>
+
+            <div
+                className={toggledSection === 'starred' ? 'selected' : ''}
+                onClick={() => onSetFilterType('starred')} id="starred"><div className="fa-solid fa-star"></div>
+            </div>
+
+            <div
+                className={toggledSection === 'sent' ? 'selected' : ''}
+                onClick={() => onSetFilterType('sent')}><div className="fa-solid fa-paper-plane"></div>
+            </div>
+
+            <div
+
+                className={toggledSection === 'draft' ? 'selected ' : ''}
+                onClick={() => onSetFilterType('draft')}><div className="fa-solid fa-file"></div>
+            </div>
+
+            <div
+                className={toggledSection === 'trash' ? 'selected' : ''}
+                onClick={() => onSetFilterType('trash')}><div className="fa-solid fa-trash-can"></div>
+            </div>
+                
+
+
+            </section>
+
+        </section>
+
+
         <button onClick={() => setMailEditToggle(mailEditToggle = true)} className="compose-btn"><div className="fa-solid fa-pencil"></div>Compose</button>
+
         <section className="folder-options">
+
             <div
                 className={toggledSection === 'inbox' ? 'selected' : ''}
                 onClick={() => onSetFilterType('inbox')}><div className="fa-solid fa-inbox"></div><span className="inbox">Inbox</span><span className="amount">{mailCount}</span>
