@@ -3,9 +3,6 @@ const { Link, Outlet, NavLink, useSearchParams } = ReactRouterDOM
 const { useNavigate, useParams } = ReactRouter
 
 
-
-import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js";
-import { Loading } from "../../note/cmps/Loading.jsx";
 import { MailEdit } from "../cmps/MailEdit.jsx";
 import { MailFilter } from "../cmps/MailFilter.jsx";
 import { MailFolderList } from "../cmps/MailFolderList.jsx";
@@ -13,7 +10,7 @@ import { MailList } from "../cmps/MailList.jsx";
 import { mailService } from "../services/mail.service.js";
 
 
-
+import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js";
 
 export function MailIndex() {
     const [searchParams, setSearchParams] = useSearchParams()
