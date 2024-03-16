@@ -1,0 +1,33 @@
+.about {
+    text-align: center;
+    margin-top: 2em;
+}
+
+.about img {
+    width: 200px;
+}
+
+.about h1 {
+    text-decoration: underline;
+    margin-bottom: 20px;
+}
+
+.about p {
+    margin: 10px auto;
+    width: 60vw;
+}
+
+
+.about div {
+    display: flex;
+    margin-bottom: 40px;
+
+}
+
+.about div p {
+    display: flex;
+    margin: 0;
+    margin-top: 60px;
+    text-align: start;
+
+}
