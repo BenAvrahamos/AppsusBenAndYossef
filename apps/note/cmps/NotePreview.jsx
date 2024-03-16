@@ -78,8 +78,8 @@ export function NotePreview({ note, onRemoveNote, onUpdateNote }) {
             <button className="remove-btn" id="remove" onClick={() => onRemove(note.id)}><span className="fa-solid fa-trash-can remove-icon"></span></button>
             {isColorModalOpen && <ColorModal setIsColorModalOpen={setIsColorModalOpen} onUpdateNote={onUpdateNote} note={note} />}
         </div>
-
         {isEditModalOpen && <EditModal setIsEditModalOpen={setIsEditModalOpen} onUpdateNote={onUpdateNote} note={note} />}
+
     </section >)
 }
 

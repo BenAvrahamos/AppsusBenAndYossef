@@ -15,5 +15,66 @@
         columns: 1;
     }
 
+    .min-input-container {
+        width: 100%;
+    }
+
+    .icon-btn-container .ham-btn-label {
+        display: inline;
+        font-size: 1.5em;
+    }
+
+    .min-input-container .ham-menu-container {
+        display: block;
+        position: relative;
+        background-color: gray;
+        z-index: 10;
+        translate: -150px 25px;
+    }
+
+    .ham-menu-ul {
+        position: absolute;
+        list-style-type: none;
+        background-color: #fff;
+        padding: 10px;
+        width: 150px;
+        text-align: center;
+        border-radius: 8px;
+        font-size: 1.5em;
+        border: 1px solid lightgrey;
+    }
+
+    .ham-menu-ul li {
+        font-size: 20px;
+        color: rgb(185, 185, 185);
+        margin: 1em;
+    }
+
+    .ham-menu-ul li:hover {
+        background-color: lightgray;
+        color: black;
+        border-radius: 8px;
+    }
+
+    .txt-icon {
+        display: none;
+    }
+
+    .img-icon {
+        display: none;
+    }
+
+    .video-icon {
+        display: none;
+    }
+
+    .todo-icon {
+        display: none;
+    }
+
+    .min-input-container input {
+        width: 95%;
+    }
+
     /* .icon-btn-container {} */
 }

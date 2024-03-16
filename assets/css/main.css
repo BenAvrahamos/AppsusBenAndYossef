@@ -22,6 +22,7 @@
 @import './apps/note/views/Notes.css';
 @import './apps/note/views/AddNotes.css';
 @import './apps/note/views/MqNotes.css';
+@import './apps/note/views/HamburgerMenuMin.css';
 
 /* @import './apps/mail/views/MailIndex.css'; */
 
