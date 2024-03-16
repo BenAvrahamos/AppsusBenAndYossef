@@ -5,6 +5,7 @@ const { useState, useEffect } = React
 
 import { mailService } from "../services/mail.service.js";
 import { utilService } from '../../../services/util.service.js'
+import { Loading } from "../../note/cmps/Loading.jsx";
 
 export function MailDetails() {
     const navigate = useNavigate()
@@ -18,9 +19,9 @@ export function MailDetails() {
 
     }, [])
 
-    function onReturn(){
+    function onReturn() {
         navigate('/mail')
-        
+
     }
 
     function calcTime(mail) {
@@ -38,7 +39,8 @@ export function MailDetails() {
             })
     }
 
-    if (!mail) return <div className="loadingAlert">loading</div>
+    if (!mail) return <div><Loading /></div>
+    // if (!mail) return <div className="loadingAlert">loading</div>
     return <section className="mail-details-container">
         <header >
             <div onClick={onReturn}><span className="fa-solid fa-arrow-left"></span></div>
