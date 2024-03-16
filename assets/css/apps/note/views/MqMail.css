@@ -1,0 +1,69 @@
+@media (width <=890px) {
+
+    .mail-edit-container{
+        font-size: 130%;
+        left: 0;
+        height: 92vh;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        box-shadow: -3px -7px 8px 0px rgb(0 0 0 / 0%), 0px -3px 14px 4px rgb(0 0 0 / 22%);
+    }
+
+
+    .mail-index-container{
+        grid-template-columns: 50px 2fr ;
+        
+    }
+
+    .mail-from{
+        max-width: 12em;
+        min-width: 12em;
+        margin-inline: 1.3em;
+    }
+
+
+
+
+    .mail-folder-list-container > * {
+        display: none;
+
+
+
+    }
+
+    .compact-mail-folder-list-container{
+        display: block;
+      
+    }
+
+
+
+
+}
+
+
+@media (width <=500px) {
+
+    .mail-preview{
+        height: 6em;
+    }
+
+    .mail-body{
+        display: none;
+    }
+
+    .mail-subject {
+        width: 2px;
+        flex-grow: 1;
+        text-wrap: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+
+
+
+
+}

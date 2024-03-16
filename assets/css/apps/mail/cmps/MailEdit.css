@@ -14,7 +14,7 @@
 
 .mail-edit-container h1 {
     padding: 10px;
-    box-shadow: 0 0 0px 0px rgb(0 0 0 / 0%), 0px 1px 0px 0px rgb(0 0 0 / 22%);
+
 }
 
 .mail-to>* {
@@ -82,6 +82,15 @@
 
 }
 
+.mail-edit-header {
+    display: flex;
+    box-shadow: 0 0 0px 0px rgb(0 0 0 / 0%), 0px 1px 0px 0px rgb(0 0 0 / 22%);
+}
+
+.mail-edit-header h1 {
+    flex-grow: 1;
+}
+
 .send-btn {
     width: 7em;
     height: 3em;
@@ -99,12 +108,12 @@
 }
 
 .close-btn {
-    position: absolute;
-    left: 400px;
-    top: 10px;
+    margin-top: 5px;
+    margin-right: 5px;
+
     width: 5em;
     height: 2em;
-    margin: 0 0 10px 10px;
+
     border-radius: 20px;
     border: 0;
     background-color: #0B57D0;
