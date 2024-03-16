@@ -1,9 +1,10 @@
 .mail-edit-container {
     position: fixed;
     bottom: 1%;
-    left: 50%;
+    left: 40%;
     height: 500px;
     width: 500px;
+    z-index: 1000;
     /* border: solid black 1px; */
     display: flex;
     flex-direction: column;
@@ -74,8 +75,8 @@
     margin-top: 9px;
     padding: 10px;
     outline: none;
-    /* font-size: 1.1em; */
-
+    font-family: "Your Font", sans-serif;
+font-size: 1.2em;
     height: 300px;
     width: 100%;
 

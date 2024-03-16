@@ -39,7 +39,7 @@ nav a.active {
     transition: 0.2s;
 }
 
-.app-header nav>*:hover {
+.main-nav > * *:hover {
     background-color: rgba(196, 196, 196, 0.37);
     border-radius: 8px;
 
@@ -62,4 +62,28 @@ nav a.active {
     margin: 0;
     height: 30px;
     padding-bottom: 5px;
+}
+
+.compact-nav {
+    display: none;
+
+}
+
+.compact-nav ul>* {
+    text-decoration: none;
+    list-style: none;
+}
+
+.compact-btn {
+    display: none;
+}
+
+.backdrop {
+    position: fixed;
+    width: 99%;
+    height: 100vh;
+    background-color: rgba(128, 128, 128, 0.274);
+    z-index: 100;
+    position: absolute;
+    top: 0%;
 }

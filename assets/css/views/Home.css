@@ -28,7 +28,6 @@
      border-radius: 15px;
  }
 
- .img-home-container>*:hover {
-     scale: 1.1;
-     rotate: 10deg;
- }
+ .img-home-container > *:hover {
+    transform: scale(1.1) rotate(10deg);
+}

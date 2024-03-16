@@ -31,6 +31,8 @@ export function MiniMizeInput({ setNotToEdit, noteToEdit, setIsExpanded, onSetFi
 
     return <section className="min-input-container">
 
+{isOpen &&<div onClick={()=> setIsOpen(isOpen =>!isOpen)} className="backdrop"></div>}
+
         <input type="text"
             placeholder={"Search here or choose >>"}
             name="txt"
