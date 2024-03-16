@@ -10,7 +10,7 @@ import { MailList } from "../cmps/MailList.jsx";
 import { mailService } from "../services/mail.service.js";
 import { Loading } from "../../note/cmps/Loading.jsx";
 
-import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js";
+import { showSuccessMsg } from "../../../services/event-bus.service.js";
 
 export function MailIndex() {
     const [searchParams, setSearchParams] = useSearchParams()
@@ -67,7 +67,7 @@ export function MailIndex() {
     function updateMail(mailToUpdate) {
         mailService.save(mailToUpdate)
             .then((savedMail) => {
-                setMails(prevMails => prevMails.map(mail => mail.id === savedMail.id ? savedMail : mail),)
+                setMails(prevMails => prevMails.map(mail => mail.id === savedMail.id ? savedMail : mail))
             })
 
     }
@@ -113,7 +113,7 @@ export function MailIndex() {
 
             })
     }
-
+    if (!mails) return <div><Loading /></div>
     return <section className="mail-index-container">
 
         <MailFilter
@@ -133,9 +133,8 @@ export function MailIndex() {
             mailCount={mailCount}
         />
 
+
         {mails && !mails.length && <div className="noMailsAlert">No Mails to Show</div>}
-        {/* {!mails && <div className="loadingAlert">loading...</div>} */}
-        {!mails && <div><Loading /></div>}
         {mails && !mailId && <MailList
             mails={mails}
             updateMail={updateMail}
