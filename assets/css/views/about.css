@@ -17,7 +17,6 @@
     margin: 30px auto;
     font-weight: bold;
     font-size: 1.3em;
-
     width: 96vw;
 }
 
@@ -30,8 +29,6 @@
     border-radius: 10px;
     color: gray;
     align-items: center;
-
-
 }
 
 
@@ -45,7 +42,6 @@
     font-size: 1.2em;
     margin:  0 60px 0 20px;
     text-align: start;
-
 }
 
 .profile{
