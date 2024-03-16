@@ -1,11 +1,7 @@
 @media(width<=830px) {
-
-
     .note-index-container {
         columns: 2;
     }
-
-
 }
 
 @media(width<=690px) {
@@ -24,11 +20,10 @@
 }
 
 @media(width<=540px) {
-
-
     .note-index-container {
         columns: 1;
-        width: 50%;
+        margin: 40px auto;
+        width: 60%;
     }
 
     .min-input-container {
