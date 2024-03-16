@@ -4,6 +4,7 @@
     left: 50%;
     height: 500px;
     width: 500px;
+    z-index: 1000;
     /* border: solid black 1px; */
     display: flex;
     flex-direction: column;

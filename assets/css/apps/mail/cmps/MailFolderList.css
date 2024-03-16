@@ -89,3 +89,9 @@
 
 
 }
+
+.compact-options>*:hover {
+    background-color: rgba(128, 128, 128, 0.192);
+    cursor: pointer;
+
+}
