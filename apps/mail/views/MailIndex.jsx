@@ -8,7 +8,7 @@ import { MailFilter } from "../cmps/MailFilter.jsx";
 import { MailFolderList } from "../cmps/MailFolderList.jsx";
 import { MailList } from "../cmps/MailList.jsx";
 import { mailService } from "../services/mail.service.js";
-
+import { Loading } from "../../note/cmps/Loading.jsx";
 
 import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js";
 
@@ -37,7 +37,6 @@ export function MailIndex() {
             })
 
 
-        console.log(mailCount);
 
     }, [mails])
 
@@ -68,8 +67,7 @@ export function MailIndex() {
     function updateMail(mailToUpdate) {
         mailService.save(mailToUpdate)
             .then((savedMail) => {
-                setMails(prevMails => prevMails.map(mail => mail.id === savedMail.id ? savedMail : mail),
-                    console.log(mails))
+                setMails(prevMails => prevMails.map(mail => mail.id === savedMail.id ? savedMail : mail),)
             })
 
     }

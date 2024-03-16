@@ -35,7 +35,6 @@ export function MailDetails() {
             .then(mail => {
                 setMail(mail)
                 calcTime(mail)
-                console.log(mail.body)
             })
     }
 
